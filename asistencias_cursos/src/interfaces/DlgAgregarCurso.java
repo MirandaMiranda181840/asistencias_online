@@ -22,17 +22,20 @@ import servicios.Conexion;
  *
  * @author miran
  */
-public class AgregarCurso extends javax.swing.JDialog {
+public class DlgAgregarCurso extends javax.swing.JDialog {
     
     Conexion conn = new Conexion();
     
     
     /**
      * Creates new form agregarCurso
+     * @param parent
+     * @param modal
      */
-    public AgregarCurso(java.awt.Frame parent, boolean modal) {
+    public DlgAgregarCurso(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -60,17 +63,25 @@ public class AgregarCurso extends javax.swing.JDialog {
         rbVier = new javax.swing.JRadioButton();
         rbSab = new javax.swing.JRadioButton();
         cbPeriodo = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
         jLabel1.setText("Nombre");
 
+        jLabel2.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
         jLabel2.setText("Periodo");
 
+        jLabel3.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
         jLabel3.setText("Dias");
 
+        jLabel4.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
         jLabel4.setText("Hora");
 
+        btnAgregar.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
         btnAgregar.setText("Agregar");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,6 +89,7 @@ public class AgregarCurso extends javax.swing.JDialog {
             }
         });
 
+        rbLunes.setFont(new java.awt.Font("Lato", 0, 12)); // NOI18N
         rbLunes.setText("Lunes");
         rbLunes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,61 +97,92 @@ public class AgregarCurso extends javax.swing.JDialog {
             }
         });
 
+        rbMartes.setFont(new java.awt.Font("Lato", 0, 12)); // NOI18N
         rbMartes.setText("Martes");
 
+        rbMier.setFont(new java.awt.Font("Lato", 0, 12)); // NOI18N
         rbMier.setText("Miércoles");
 
+        rbJuev.setFont(new java.awt.Font("Lato", 0, 12)); // NOI18N
         rbJuev.setText("Jueves");
 
+        rbVier.setFont(new java.awt.Font("Lato", 0, 12)); // NOI18N
         rbVier.setText("Viernes");
 
+        rbSab.setFont(new java.awt.Font("Lato", 0, 12)); // NOI18N
         rbSab.setText("Sábado");
 
+        cbPeriodo.setFont(new java.awt.Font("Lato", 0, 12)); // NOI18N
         cbPeriodo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AgoDic20", "EneJun21", "AgoDic21", "EneJun22" }));
+
+        jLabel5.setFont(new java.awt.Font("Lato", 1, 18)); // NOI18N
+        jLabel5.setText("AGREGAR CURSO");
+
+        jLabel6.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
+        jLabel6.setText("Agregar hora con sistema de 24 hrs.");
+
+        jButton1.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
+        jButton1.setText("Regresar");
+        jButton1.setToolTipText("");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addGap(29, 29, 29)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(rbMier)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(rbSab))
+                                .addComponent(jLabel4)
+                                .addGap(29, 29, 29)
+                                .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cbPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addGap(34, 34, 34)
+                                .addComponent(btnAgregar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(34, 34, 34)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(rbMartes)
-                                    .addComponent(rbLunes))
-                                .addGap(20, 20, 20)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(rbVier)
-                                    .addComponent(rbJuev)))
-                            .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(rbMier)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(rbSab))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(rbMartes)
+                                            .addComponent(rbLunes))
+                                        .addGap(20, 20, 20)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(rbVier)
+                                            .addComponent(rbJuev)))))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(98, 98, 98)
-                        .addComponent(btnAgregar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(257, Short.MAX_VALUE))
+                        .addGap(83, 83, 83)
+                        .addComponent(jLabel5)))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(110, 110, 110)
+                .addGap(31, 31, 31)
+                .addComponent(jLabel5)
+                .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -160,13 +203,17 @@ public class AgregarCurso extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rbMier)
                     .addComponent(rbSab))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addComponent(btnAgregar)
-                .addGap(31, 31, 31))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAgregar)
+                    .addComponent(jButton1))
+                .addGap(29, 29, 29))
         );
 
         pack();
@@ -199,7 +246,7 @@ public class AgregarCurso extends javax.swing.JDialog {
                     Curso curso = new Curso(nombre, periodo, dias, hora);
                     guardar(Conexion.obtener(), curso);
                 } catch (SQLException | ClassNotFoundException ex) {
-                    Logger.getLogger(AgregarCurso.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(DlgAgregarCurso.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 
             }
@@ -208,16 +255,17 @@ public class AgregarCurso extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Por favor rellene la hora con sistema de 24 horas");
         }
         
-        
-        
-        
-          
-        
+               
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void rbLunesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbLunesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rbLunesActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public void guardar(Connection conexion, Curso curso) throws SQLException{
       try{
@@ -236,6 +284,8 @@ public class AgregarCurso extends javax.swing.JDialog {
             consulta.setString(4, curso.getHora());
             consulta.executeUpdate();
             JOptionPane.showMessageDialog(this, "¡Se registró el curso con exito!");
+            //conexion.close();
+            
         }
            
       }catch(SQLException ex){
@@ -251,10 +301,13 @@ public class AgregarCurso extends javax.swing.JDialog {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JComboBox<String> cbPeriodo;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JRadioButton rbJuev;
     private javax.swing.JRadioButton rbLunes;
     private javax.swing.JRadioButton rbMartes;

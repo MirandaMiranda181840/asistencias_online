@@ -5,6 +5,8 @@
  */
 package interfaces;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author miran
@@ -14,13 +16,15 @@ package interfaces;
 
 public class Frprincipal extends javax.swing.JFrame {
 
-    AgregarCurso agregarC;
+    DlgAgregarCurso agregarC;
+    DlgListarCursos listarC;
     /**
      * Creates new form frprincipal
      */
     public Frprincipal() {
         initComponents();
-        
+        this.setSize(375, 473);
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -33,41 +37,47 @@ public class Frprincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         agregarCurso = new javax.swing.JButton();
+        btnListarCursos = new javax.swing.JButton();
+        txtLogo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        agregarCurso.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
         agregarCurso.setText("Agregar curso");
         agregarCurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 agregarCursoActionPerformed(evt);
             }
         });
+        getContentPane().add(agregarCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 150, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(140, 140, 140)
-                .addComponent(agregarCurso)
-                .addContainerGap(198, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(295, Short.MAX_VALUE)
-                .addComponent(agregarCurso)
-                .addGap(152, 152, 152))
-        );
+        btnListarCursos.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
+        btnListarCursos.setText("Cursos registrados");
+        btnListarCursos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarCursosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnListarCursos, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 310, 150, -1));
+
+        txtLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo.png"))); // NOI18N
+        getContentPane().add(txtLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 280, 160));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void agregarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarCursoActionPerformed
         // TODO add your handling code here:
-        agregarC = new AgregarCurso(this, true);
+        agregarC = new DlgAgregarCurso(this, true);
         agregarC.setVisible(true);
     }//GEN-LAST:event_agregarCursoActionPerformed
+
+    private void btnListarCursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarCursosActionPerformed
+        // TODO add your handling code here:
+        listarC = new DlgListarCursos(this, true);
+        listarC.setVisible(true);
+    }//GEN-LAST:event_btnListarCursosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -110,5 +120,7 @@ public class Frprincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton agregarCurso;
+    private javax.swing.JButton btnListarCursos;
+    private javax.swing.JLabel txtLogo;
     // End of variables declaration//GEN-END:variables
 }
