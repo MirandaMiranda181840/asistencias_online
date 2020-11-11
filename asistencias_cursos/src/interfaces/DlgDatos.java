@@ -5,6 +5,7 @@
  */
 package interfaces;
 
+import entidades.Curso;
 import entidades.ModeloExcel;
 import java.io.File;
 import java.io.IOException;
@@ -12,6 +13,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
@@ -29,7 +31,8 @@ public class DlgDatos extends javax.swing.JFrame {
     JFileChooser selecArchivo = new JFileChooser();
     File archivo;
     int contAccion = 0;
- Conexion conn = new Conexion();
+    Conexion conn = new Conexion();
+    ArrayList<Curso> cursos = new ArrayList();
     
      private Connection conexion = null;
     private Statement comando = null;
@@ -68,7 +71,6 @@ public class DlgDatos extends javax.swing.JFrame {
     private void llenarComboBox(){
         int id;
         String nombre, periodo, dias, hora;
-
         
         // Ponemos los datos en la tabla
         
@@ -85,7 +87,8 @@ public class DlgDatos extends javax.swing.JFrame {
                 hora = resultados.getString("hora");
                 
                 cbCursos.addItem("Curso: " + nombre + ", Periodo: " + periodo + ", Días: " + dias + ", Hora: " + hora);
-                      
+                Curso cursito = new Curso(id, nombre, periodo, dias, hora);
+                cursos.add(cursito);
             }
             
             //this.cerrar();
@@ -236,7 +239,11 @@ public class DlgDatos extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
      try{
          //cambiar ese 1 por el id del curso seleccionado en el combobox
-         modeloE.guardar(Conexion.obtener(), "1");
+         int claseSeleccionada = cbCursos.getSelectedIndex();
+         String idClaseSeleccionada = String.valueOf(cursos.get(claseSeleccionada).getId());
+         System.out.println("ID CLASE SELECCIONADA: "+idClaseSeleccionada);
+         
+         modeloE.guardar(Conexion.obtener(), idClaseSeleccionada);
           JOptionPane.showMessageDialog(this, "¡Se registró la lista de asistencia con éxito!");
      }catch(SQLException ex){
              JOptionPane.showMessageDialog(this, "Error con el registro de lista de asistencia");
