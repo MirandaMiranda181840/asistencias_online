@@ -5,9 +5,10 @@
  */
 package entidades;
 
-import com.mysql.jdbc.PreparedStatement;
+
 import java.io.*;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.*;
 import java.util.logging.Level;

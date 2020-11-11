@@ -4,9 +4,6 @@
  * and open the template in the editor.
  */
 package interfaces;
-
-import javax.swing.ImageIcon;
-
 /**
  *
  * @author miran
