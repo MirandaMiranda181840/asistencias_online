@@ -67,26 +67,11 @@ public class DlgDatos extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nombre", "Asistencia", "Hora de entrada", "Tiempo de Clase", "Hora de Salida"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
             }
-        });
+        ));
         jtDatos.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jtDatos);
-        if (jtDatos.getColumnModel().getColumnCount() > 0) {
-            jtDatos.getColumnModel().getColumn(0).setResizable(false);
-            jtDatos.getColumnModel().getColumn(1).setResizable(false);
-            jtDatos.getColumnModel().getColumn(2).setResizable(false);
-            jtDatos.getColumnModel().getColumn(3).setResizable(false);
-            jtDatos.getColumnModel().getColumn(4).setResizable(false);
-        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -95,11 +80,9 @@ public class DlgDatos extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnImportar)
-                        .addGap(0, 363, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addComponent(btnImportar)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

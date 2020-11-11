@@ -21,26 +21,33 @@ import org.apache.poi.xssf.usermodel.*;
  */
 public class ModeloExcel {
 
-    public static final String SEPARATOR = ";";
+    public static final String SEPARATOR = " ";
 
     public String importar(File archivo, JTable tablaD) throws IOException {
-        
+
         String respuesta = "No se pudo realizar la importación.";
         DefaultTableModel modelo = new DefaultTableModel();
         tablaD.setModel(modelo);
         tablaD.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         BufferedReader br = null;
-        String []info=new String[4];
-        
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Asistencia");
+        modelo.addColumn("Hora Entrada");
+        modelo.addColumn("Tiempo en clase");
+        modelo.addColumn("Hora de salida");
+        String[] info = new String[4];
+        int i = 0;
         try {
-            
+
             br = new BufferedReader(new FileReader(archivo.getAbsolutePath()));
             String line = br.readLine();
             while (null != line) {
 
-                String[] fields = line.split(SEPARATOR);
+                String[] fields = line.split(SEPARATOR,20);
 
                 System.out.println(Arrays.toString(fields));
+
+                modelo.addRow(fields);
 
                 line = br.readLine();
             }
