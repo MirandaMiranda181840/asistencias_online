@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package entidades;
+
 import java.io.*;
 import java.util.*;
 import javax.swing.*;
@@ -19,55 +20,41 @@ import org.apache.poi.xssf.usermodel.*;
  * @author loslolis
  */
 public class ModeloExcel {
-    Workbook wb;
-    
-    public String importar(File archivo, JTable tabalaD){
-        String respuesta="No se pudo realizar la importación.";
-        DefaultTableModel modeloT = new DefaultTableModel();
-        tabalaD.setModel(modeloT);
+
+    public static final String SEPARATOR = ";";
+
+    public String importar(File archivo, JTable tablaD) throws IOException {
+        
+        String respuesta = "No se pudo realizar la importación.";
+        DefaultTableModel modelo = new DefaultTableModel();
+        tablaD.setModel(modelo);
+        tablaD.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        BufferedReader br = null;
+        String []info=new String[4];
         
         try {
-            wb=WorkbookFactory.create(new FileInputStream(archivo));
-            Sheet hoja = wb.getSheetAt(0);
-            Iterator filaIterator = hoja.rowIterator();
-            int indiceFila=-1;
-            while (filaIterator.hasNext()) {
-                indiceFila++;
-                Row fila = (Row) filaIterator.next();
-                Iterator columnaIterator = fila.cellIterator();
-                Object[] listaColumna = new Object[5];
-                int indiceColumna=-1;
-                while (columnaIterator.hasNext()) {                    
-                    indiceColumna++;
-                    Cell celda = (Cell) columnaIterator.next();
-                    if (indiceFila == 0) {
-                        modeloT.addColumn(celda.getStringCellValue());
-                    }else{
-                        if (celda!=null) {
-                            switch(celda.getCellType()){
-                                case Cell.CELL_TYPE_NUMERIC:
-                                    listaColumna[indiceColumna]=(int)Math.round(celda.getNumericCellValue());
-                                    break;
-                                case Cell.CELL_TYPE_STRING:
-                                    listaColumna[indiceColumna]=celda.getBooleanCellValue();
-                                    break;
-                                default:
-                                    listaColumna[indiceColumna]=celda.getDateCellValue();
-                                    break; 
-                            }
-                        }
-                    }
-                }
-                if (indiceFila!=0)modeloT.addRow(listaColumna);
-                
+            
+            br = new BufferedReader(new FileReader(archivo.getAbsolutePath()));
+            String line = br.readLine();
+            while (null != line) {
+
+                String[] fields = line.split(SEPARATOR);
+
+                System.out.println(Arrays.toString(fields));
+
+                line = br.readLine();
             }
-            respuesta="importación exitosa";    
-        }  catch (IOException | InvalidFormatException | EncryptedDocumentException e) {
+            respuesta = "importación exitosa";
+        } catch (Exception e) {
             System.err.println(e.getMessage());
+        } finally {
+            if (null != br) {
+                br.close();
+            }
+            return respuesta;
+
         }
-        return respuesta;
-                
-        
+
     }
-    
+
 }

@@ -7,6 +7,9 @@ package interfaces;
 
 import entidades.ModeloExcel;
 import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -64,11 +67,11 @@ public class DlgDatos extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Nombre", "Asistencia", "Hora de entrada", "Tiempo de Clase", "Hora de Salida"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -82,20 +85,21 @@ public class DlgDatos extends javax.swing.JFrame {
             jtDatos.getColumnModel().getColumn(1).setResizable(false);
             jtDatos.getColumnModel().getColumn(2).setResizable(false);
             jtDatos.getColumnModel().getColumn(3).setResizable(false);
+            jtDatos.getColumnModel().getColumn(4).setResizable(false);
         }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10))
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(btnImportar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnImportar)
+                        .addGap(0, 363, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -120,7 +124,11 @@ public class DlgDatos extends javax.swing.JFrame {
             if (selecArchivo.showDialog(null, "Seleccionar archivo") == JFileChooser.APPROVE_OPTION) {
                 archivo = selecArchivo.getSelectedFile();
                 if (archivo.getName().endsWith("xls") || archivo.getName().endsWith("xlsx") || archivo.getName().endsWith("csv")){
-                    JOptionPane.showMessageDialog(null, modeloE.importar(archivo, jtDatos));
+                    try {
+                        JOptionPane.showMessageDialog(null, modeloE.importar(archivo, jtDatos));
+                    } catch (IOException ex) {
+                        Logger.getLogger(DlgDatos.class.getName()).log(Level.SEVERE, null, ex);
+                    }
 
                 } else {
                     JOptionPane.showMessageDialog(null, "Elija un formato valido.");
@@ -134,6 +142,6 @@ public class DlgDatos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnImportar;
     private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JTable jtDatos;
+    private javax.swing.JTable jtDatos;
     // End of variables declaration//GEN-END:variables
 }
