@@ -9,11 +9,6 @@ import java.io.*;
 import java.util.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import org.apache.poi.EncryptedDocumentException;
-import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.hssf.usermodel.*;
-import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-import org.apache.poi.xssf.usermodel.*;
 
 /**
  *
@@ -21,7 +16,7 @@ import org.apache.poi.xssf.usermodel.*;
  */
 public class ModeloExcel {
 
-    public static final String SEPARATOR = " ";
+    public static final String SEPARATOR = "	";
 
     public String importar(File archivo, JTable tablaD) throws IOException {
 
