@@ -42,6 +42,7 @@ public class DlgDatos extends javax.swing.JFrame {
      */
     public DlgDatos() {
         initComponents();
+        setLocationRelativeTo(null);
         llenarComboBox();
     }
 
@@ -71,8 +72,6 @@ public class DlgDatos extends javax.swing.JFrame {
     private void llenarComboBox(){
         int id;
         String nombre, periodo, dias, hora;
-        
-        // Ponemos los datos en la tabla
         
         try {
             // Obtener datos de la tabla
@@ -118,6 +117,7 @@ public class DlgDatos extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         fechaLista = new javax.swing.JLabel();
+        btnRegresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("IMPORTAR CON JAVA");
@@ -163,6 +163,13 @@ public class DlgDatos extends javax.swing.JFrame {
 
         fechaLista.setText("0");
 
+        btnRegresar.setText("Regresar");
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -189,7 +196,9 @@ public class DlgDatos extends javax.swing.JFrame {
                                         .addComponent(fechaLista))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(215, 215, 215)
-                                .addComponent(jButton1)))
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnRegresar)))
                         .addGap(0, 379, Short.MAX_VALUE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
@@ -213,7 +222,9 @@ public class DlgDatos extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(btnRegresar))
                 .addGap(56, 56, 56))
         );
 
@@ -265,9 +276,15 @@ public class DlgDatos extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_btnRegresarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnImportar;
+    private javax.swing.JButton btnRegresar;
     private javax.swing.JComboBox<String> cbCursos;
     private javax.swing.JLabel fechaLista;
     private javax.swing.JButton jButton1;

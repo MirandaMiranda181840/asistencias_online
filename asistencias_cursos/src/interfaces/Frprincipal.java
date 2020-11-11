@@ -16,6 +16,7 @@ public class Frprincipal extends javax.swing.JFrame {
     DlgAgregarCurso agregarC;
     DlgListarCursos listarC;
     DlgDatos datosC;
+    DlgConsultarAsistencias consultarA;
     /**
      * Creates new form frprincipal
      */
@@ -38,6 +39,7 @@ public class Frprincipal extends javax.swing.JFrame {
         btnListarCursos = new javax.swing.JButton();
         txtLogo = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        btnConsultarAsistencias = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -49,7 +51,7 @@ public class Frprincipal extends javax.swing.JFrame {
                 agregarCursoActionPerformed(evt);
             }
         });
-        getContentPane().add(agregarCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 170, -1));
+        getContentPane().add(agregarCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, 170, -1));
 
         btnListarCursos.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
         btnListarCursos.setText("Cursos registrados");
@@ -58,19 +60,28 @@ public class Frprincipal extends javax.swing.JFrame {
                 btnListarCursosActionPerformed(evt);
             }
         });
-        getContentPane().add(btnListarCursos, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, 170, -1));
+        getContentPane().add(btnListarCursos, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 170, -1));
 
         txtLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo.png"))); // NOI18N
         getContentPane().add(txtLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 280, 160));
 
-        jButton1.setFont(new java.awt.Font("Leelawadee UI", 1, 14)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
         jButton1.setText("Importar asistencias");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 350, 170, 30));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, 170, 30));
+
+        btnConsultarAsistencias.setText("Consultar asistencias");
+        btnConsultarAsistencias.setToolTipText("");
+        btnConsultarAsistencias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarAsistenciasActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnConsultarAsistencias, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, 170, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -91,6 +102,13 @@ public class Frprincipal extends javax.swing.JFrame {
         datosC = new DlgDatos();
         datosC.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnConsultarAsistenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarAsistenciasActionPerformed
+        // TODO add your handling code here:
+        consultarA = new DlgConsultarAsistencias(this, true);
+        consultarA.setVisible(true);
+        
+    }//GEN-LAST:event_btnConsultarAsistenciasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -133,6 +151,7 @@ public class Frprincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton agregarCurso;
+    private javax.swing.JButton btnConsultarAsistencias;
     private javax.swing.JButton btnListarCursos;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel txtLogo;
