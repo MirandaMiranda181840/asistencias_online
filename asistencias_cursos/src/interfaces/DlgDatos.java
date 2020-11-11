@@ -6,7 +6,6 @@
 package interfaces;
 
 import entidades.ModeloExcel;
-import java.awt.BorderLayout;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
@@ -17,10 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.table.DefaultTableModel;
 import servicios.Conexion;
 
 /**
@@ -33,7 +29,7 @@ public class DlgDatos extends javax.swing.JFrame {
     JFileChooser selecArchivo = new JFileChooser();
     File archivo;
     int contAccion = 0;
-
+ Conexion conn = new Conexion();
     
      private Connection conexion = null;
     private Statement comando = null;
@@ -152,6 +148,11 @@ public class DlgDatos extends javax.swing.JFrame {
         jLabel3.setText("Fecha:");
 
         jButton1.setText("Guardar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -214,6 +215,7 @@ public class DlgDatos extends javax.swing.JFrame {
                 archivo = selecArchivo.getSelectedFile();
                 if (archivo.getName().endsWith("xls") || archivo.getName().endsWith("xlsx") || archivo.getName().endsWith("csv")){
                     try {
+                        
                         JOptionPane.showMessageDialog(null, modeloE.importar(archivo, jtDatos));
                     } catch (IOException ex) {
                         Logger.getLogger(DlgDatos.class.getName()).log(Level.SEVERE, null, ex);
@@ -230,6 +232,19 @@ public class DlgDatos extends javax.swing.JFrame {
     private void cbCursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCursosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbCursosActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+     try{
+         //cambiar ese 1 por el id del curso seleccionado en el combobox
+         modeloE.guardar(Conexion.obtener(), "1");
+          JOptionPane.showMessageDialog(this, "¡Se registró la lista de asistencia con éxito!");
+     }catch(SQLException ex){
+             JOptionPane.showMessageDialog(this, "Error con el registro de lista de asistencia");
+     }  
+     catch (ClassNotFoundException ex) {
+            Logger.getLogger(DlgDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

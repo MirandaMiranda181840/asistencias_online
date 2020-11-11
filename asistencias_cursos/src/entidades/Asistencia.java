@@ -12,11 +12,29 @@ import java.util.Objects;
  * @author crisb
  */
 public class Asistencia {
-    private String idCurso, nombre, horaLlegada, duracion, horaSalida;
+    private String idCurso, nombre, horaLlegada, duracion, horaSalida,fecha;
     private boolean asistencia;
 
-    public Asistencia(String idCurso, String nombre, String horaLlegada, String duracion, String horaSalida, boolean asistencia) {
+    public Asistencia(String idCurso, String nombre, String horaLlegada, String duracion, String horaSalida, String fecha, boolean asistencia) {
         this.idCurso = idCurso;
+        this.nombre = nombre;
+        this.horaLlegada = horaLlegada;
+        this.duracion = duracion;
+        this.horaSalida = horaSalida;
+        this.fecha = fecha;
+        this.asistencia = asistencia;
+    }
+
+    public Asistencia(String nombre, String horaLlegada, String duracion, String horaSalida, String fecha, boolean asistencia) {
+        this.nombre = nombre;
+        this.horaLlegada = horaLlegada;
+        this.duracion = duracion;
+        this.horaSalida = horaSalida;
+        this.fecha = fecha;
+        this.asistencia = asistencia;
+    }
+
+    public Asistencia(String nombre, String horaLlegada, String duracion, String horaSalida, boolean asistencia) {
         this.nombre = nombre;
         this.horaLlegada = horaLlegada;
         this.duracion = duracion;
@@ -24,8 +42,6 @@ public class Asistencia {
         this.asistencia = asistencia;
     }
 
-    
-    
     public String getIdCurso() {
         return idCurso;
     }
@@ -66,6 +82,14 @@ public class Asistencia {
         this.horaSalida = horaSalida;
     }
 
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
     public boolean isAsistencia() {
         return asistencia;
     }
@@ -76,20 +100,19 @@ public class Asistencia {
 
     @Override
     public String toString() {
-        return "Asistencia{" + "idCurso=" + idCurso + ", nombre=" + nombre + ", horaLlegada=" + horaLlegada + ", duracion=" + duracion + ", horaSalida=" + horaSalida + ", asistencia=" + asistencia + '}';
+        return "Asistencia{" + "idCurso=" + idCurso + ", nombre=" + nombre + ", horaLlegada=" + horaLlegada + ", duracion=" + duracion + ", horaSalida=" + horaSalida + ", fecha=" + fecha + ", asistencia=" + asistencia + '}';
     }
-    
-    
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 59 * hash + Objects.hashCode(this.idCurso);
-        hash = 59 * hash + Objects.hashCode(this.nombre);
-        hash = 59 * hash + Objects.hashCode(this.horaLlegada);
-        hash = 59 * hash + Objects.hashCode(this.duracion);
-        hash = 59 * hash + Objects.hashCode(this.horaSalida);
-        hash = 59 * hash + (this.asistencia ? 1 : 0);
+        int hash = 5;
+        hash = 13 * hash + Objects.hashCode(this.idCurso);
+        hash = 13 * hash + Objects.hashCode(this.nombre);
+        hash = 13 * hash + Objects.hashCode(this.horaLlegada);
+        hash = 13 * hash + Objects.hashCode(this.duracion);
+        hash = 13 * hash + Objects.hashCode(this.horaSalida);
+        hash = 13 * hash + Objects.hashCode(this.fecha);
+        hash = 13 * hash + (this.asistencia ? 1 : 0);
         return hash;
     }
 
@@ -123,9 +146,13 @@ public class Asistencia {
         if (!Objects.equals(this.horaSalida, other.horaSalida)) {
             return false;
         }
+        if (!Objects.equals(this.fecha, other.fecha)) {
+            return false;
+        }
         return true;
     }
 
+    
    
     
 }
