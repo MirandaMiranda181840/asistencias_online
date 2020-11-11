@@ -113,6 +113,8 @@ public class DlgDatos extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        fechaLista = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("IMPORTAR CON JAVA");
@@ -154,6 +156,10 @@ public class DlgDatos extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setText("Asistencia de la Fecha:");
+
+        fechaLista.setText("0");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -167,17 +173,21 @@ public class DlgDatos extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addGap(8, 8, 8)
-                                        .addComponent(btnImportar))
-                                    .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel1)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cbCursos, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(cbCursos, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addGap(8, 8, 8)
+                                        .addComponent(btnImportar)
+                                        .addGap(125, 125, 125)
+                                        .addComponent(jLabel4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(fechaLista))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(215, 215, 215)
                                 .addComponent(jButton1)))
-                        .addGap(0, 407, Short.MAX_VALUE))
+                        .addGap(0, 379, Short.MAX_VALUE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
@@ -186,7 +196,10 @@ public class DlgDatos extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnImportar)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnImportar)
+                        .addComponent(jLabel4)
+                        .addComponent(fechaLista))
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -209,14 +222,13 @@ public class DlgDatos extends javax.swing.JFrame {
         if (contAccion == 1) {
             AgregarFiltro();
         }
-
         if (evt.getSource() == btnImportar) {
             if (selecArchivo.showDialog(null, "Seleccionar archivo") == JFileChooser.APPROVE_OPTION) {
                 archivo = selecArchivo.getSelectedFile();
                 if (archivo.getName().endsWith("xls") || archivo.getName().endsWith("xlsx") || archivo.getName().endsWith("csv")){
                     try {
-                        
-                        JOptionPane.showMessageDialog(null, modeloE.importar(archivo, jtDatos));
+                       
+                        JOptionPane.showMessageDialog(null, modeloE.importar(archivo, jtDatos, fechaLista));
                     } catch (IOException ex) {
                         Logger.getLogger(DlgDatos.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -250,10 +262,12 @@ public class DlgDatos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnImportar;
     private javax.swing.JComboBox<String> cbCursos;
+    private javax.swing.JLabel fechaLista;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable jtDatos;
     // End of variables declaration//GEN-END:variables
