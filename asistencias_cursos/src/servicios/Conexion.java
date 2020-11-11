@@ -19,6 +19,7 @@ public class Conexion {
       if (cnx == null) {
          try {
             Class.forName("com.mysql.jdbc.Driver");
+
             //modificar con tus params
             //Cris:"jdbc:mysql://localhost:3306/asistencias", "root", ""
             cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/asistencias", "root", "");
