@@ -27,18 +27,21 @@ import servicios.Conexion;
  */
 public class DlgConsultarAsistencias extends javax.swing.JDialog {
 
-    
     Conexion conn = new Conexion();
     ArrayList<Curso> cursos = new ArrayList();
     ArrayList<Asistencia> asistencias = new ArrayList();
-    
-     private Connection conexion = null;
+    ArrayList<String> info = new ArrayList<String>();
+
+    DlgModificar modificarC;
+
+    private Connection conexion = null;
     private Statement comando = null;
     private ResultSet resultados = null;
     private ResultSet resultadosCursos = null;
-    
+
     /**
      * Creates new form DlgConsultarAsistencias
+     *
      * @param parent
      * @param modal
      */
@@ -47,11 +50,16 @@ public class DlgConsultarAsistencias extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
         llenarComboBox();
-    
+
     }
-    
+
+    private DlgConsultarAsistencias(ArrayList<String> info) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     /**
      * Obtenemos todos los datos de la tabla juegos;
+     *
      * @throws ClassNotFoundException
      * @throws SQLException
      */
@@ -61,96 +69,89 @@ public class DlgConsultarAsistencias extends javax.swing.JDialog {
         comando = conexion.createStatement();
         resultados = comando.executeQuery(instruccion);
     }
-    
-    
+
     /**
      * Obtenemos todos los datos de la tabla asistencia según los parámetros
+     *
      * @throws ClassNotFoundException
      * @throws SQLException
      */
     private void leerCursos(String fecha, int idCurso) throws ClassNotFoundException, SQLException {
-        String instruccion = "SELECT * FROM asistencias WHERE idCurso="+idCurso+ " AND fecha='"+fecha+"'";
+        String instruccion = "SELECT * FROM asistencias WHERE idCurso=" + idCurso + " AND fecha='" + fecha + "'";
         conexion = Conexion.obtener();
         comando = conexion.createStatement();
-        resultadosCursos = comando.executeQuery(instruccion); 
+        resultadosCursos = comando.executeQuery(instruccion);
     }
-    
 
-    private void llenaTabla() throws SQLException{
+    private void llenaTabla() throws SQLException {
         DefaultTableModel modelo = new DefaultTableModel();
         jtDatos.setModel(modelo);
         //jtDatos.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         modelo.addColumn("Nombre");
         modelo.addColumn("Hora de entrada");
         modelo.addColumn("Duración");
-        
+
         int idC, asistencia;
         String nomb, horaLlegada, duracion, horaSalida, fechaC;
-        
-        if(resultadosCursos.next() == false){
+
+        if (resultadosCursos.next() == false) {
             JOptionPane.showMessageDialog(this, "No hay registros para ese curso con esa fecha");
-        }else{
-            while(resultadosCursos.next() == true) {
-            
-            idC = resultadosCursos.getInt("idCurso");
-            nomb = resultadosCursos.getString("nombre");
-            horaLlegada = resultadosCursos.getString("horaLlegada");
-            duracion = resultadosCursos.getString("duracion");
-            horaSalida = resultadosCursos.getString("horaSalida");
-            asistencia = resultadosCursos.getInt("asistencia");
-            fechaC = resultadosCursos.getString("fecha");
-            boolean auxi;
-            String estuvo;
-            if(asistencia == 1){
-                auxi = true;
-                estuvo = "Asistió";
-            }else{
-                auxi = false;
-                estuvo = "No asistió";
-            }
-            Asistencia asis = new Asistencia(String.valueOf(idC), nomb, horaLlegada, duracion, horaSalida, fechaC,  auxi);
-            asistencias.add(asis);
-            System.out.println("Se añadió: "+asis.toString());
-             modelo.addRow( new Object[] {nomb, horaLlegada, duracion} );      
+        } else {
+            while (resultadosCursos.next() == true) {
+
+                idC = resultadosCursos.getInt("idCurso");
+                nomb = resultadosCursos.getString("nombre");
+                horaLlegada = resultadosCursos.getString("horaLlegada");
+                duracion = resultadosCursos.getString("duracion");
+                horaSalida = resultadosCursos.getString("horaSalida");
+                asistencia = resultadosCursos.getInt("asistencia");
+                fechaC = resultadosCursos.getString("fecha");
+                boolean auxi;
+                String estuvo;
+                if (asistencia == 1) {
+                    auxi = true;
+                    estuvo = "Asistió";
+                } else {
+                    auxi = false;
+                    estuvo = "No asistió";
+                }
+                Asistencia asis = new Asistencia(String.valueOf(idC), nomb, horaLlegada, duracion, horaSalida, fechaC, auxi);
+                asistencias.add(asis);
+                System.out.println("Se añadió: " + asis.toString());
+                modelo.addRow(new Object[]{nomb, horaLlegada, duracion});
             }
         }
-        
-        
-        
+
     }
-    
-    private void llenarComboBox(){
+
+    private void llenarComboBox() {
         int id;
         String nombre, periodo, dias, hora;
-        
+
         // Ponemos los datos en la tabla
-        
         try {
             // Obtener datos de la tabla
             this.leerDatos();
-            
-            while(resultados.next() == true) {
-                
+
+            while (resultados.next() == true) {
+
                 id = resultados.getInt("id");
                 nombre = resultados.getString("nombre");
-                periodo= resultados.getString("periodo");
+                periodo = resultados.getString("periodo");
                 dias = resultados.getString("dias");
                 hora = resultados.getString("hora");
-                
+
                 cbCursos.addItem("Curso: " + nombre + ", Periodo: " + periodo + ", Días: " + dias + ", Hora: " + hora);
                 Curso cursito = new Curso(id, nombre, periodo, dias, hora);
                 cursos.add(cursito);
             }
-            
+
             //this.cerrar();
-            
         } catch (SQLException | ClassNotFoundException e) {
-            System.out.println("Error de lectura de BD\n\n");            
+            System.out.println("Error de lectura de BD\n\n");
             e.printStackTrace();
         }
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -170,6 +171,7 @@ public class DlgConsultarAsistencias extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         jtDatos = new javax.swing.JTable();
         btnRegresar = new javax.swing.JButton();
+        botonGuardar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -205,6 +207,13 @@ public class DlgConsultarAsistencias extends javax.swing.JDialog {
             }
         });
 
+        botonGuardar.setText("Modificar");
+        botonGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonGuardarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -231,15 +240,17 @@ public class DlgConsultarAsistencias extends javax.swing.JDialog {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(189, 189, 189)
                                 .addComponent(btnConsultarLista)))
-                        .addGap(0, 8, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(203, 203, 203)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(96, 96, 96)
+                .addComponent(botonGuardar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnRegresar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(98, 98, 98))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -258,9 +269,11 @@ public class DlgConsultarAsistencias extends javax.swing.JDialog {
                 .addComponent(btnConsultarLista)
                 .addGap(28, 28, 28)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(btnRegresar)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRegresar)
+                    .addComponent(botonGuardar))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         pack();
@@ -270,7 +283,7 @@ public class DlgConsultarAsistencias extends javax.swing.JDialog {
         // TODO add your handling code here:
         String regex = "^(\\d{4})-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$";
         String fechaTexto = txtFecha.getText();
-        if(Pattern.matches(regex, fechaTexto)){
+        if (Pattern.matches(regex, fechaTexto)) {
             try {
                 int claseSeleccionada = cbCursos.getSelectedIndex();
                 int idClaseSeleccionada = cursos.get(claseSeleccionada).getId();
@@ -281,7 +294,7 @@ public class DlgConsultarAsistencias extends javax.swing.JDialog {
                 Logger.getLogger(DlgConsultarAsistencias.class.getName()).log(Level.SEVERE, null, ex);
                 System.out.println(ex.getMessage());
             }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "Ingrese la fecha con el formato indicado");
         }
     }//GEN-LAST:event_btnConsultarListaActionPerformed
@@ -291,9 +304,22 @@ public class DlgConsultarAsistencias extends javax.swing.JDialog {
         this.setVisible(false);
     }//GEN-LAST:event_btnRegresarActionPerformed
 
-    
+    private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
+        for (int i = 0; i < jtDatos.getRowCount(); i++) {
+            if (i == jtDatos.getSelectedRow()) {
+                info.add(0, (String) jtDatos.getValueAt(i, 0));
+                info.add(1, (String) jtDatos.getValueAt(i, 1));
+                info.add(2, (String) jtDatos.getValueAt(i, 2));
+            }
+
+        }       
+        modificarC = new DlgModificar(info);
+        modificarC.setVisible(true);
+    }//GEN-LAST:event_botonGuardarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonGuardar;
     private javax.swing.JButton btnConsultarLista;
     private javax.swing.JButton btnRegresar;
     private javax.swing.JComboBox<String> cbCursos;
