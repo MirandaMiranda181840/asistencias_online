@@ -305,16 +305,22 @@ public class DlgConsultarAsistencias extends javax.swing.JDialog {
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
-        for (int i = 0; i < jtDatos.getRowCount(); i++) {
-            if (i == jtDatos.getSelectedRow()) {
-                info.add(0, (String) jtDatos.getValueAt(i, 0));
-                info.add(1, (String) jtDatos.getValueAt(i, 1));
-                info.add(2, (String) jtDatos.getValueAt(i, 2));
-            }
-
-        }       
-        modificarC = new DlgModificar(info);
+//        for (int i = 0; i < jtDatos.getRowCount(); i++) {
+//            if (i == jtDatos.getSelectedRow()) {
+//                info.add(0, (String) jtDatos.getValueAt(i, 0));
+//                info.add(1, (String) jtDatos.getValueAt(i, 1));
+//                info.add(2, (String) jtDatos.getValueAt(i, 2));
+//            }
+//
+//        }       
+//        modificarC = new DlgModificar(info);
+//        modificarC.setVisible(true);
+        
+        Asistencia asistenciaSeleccionada = asistencias.get(jtDatos.getSelectedRow());
+        modificarC = new DlgModificar(asistenciaSeleccionada);
         modificarC.setVisible(true);
+        this.setVisible(false);
+        
     }//GEN-LAST:event_botonGuardarActionPerformed
 
 

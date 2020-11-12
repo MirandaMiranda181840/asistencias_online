@@ -5,6 +5,7 @@
  */
 package interfaces;
 
+import entidades.Asistencia;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,6 +13,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import servicios.Conexion;
 
 /**
@@ -21,24 +23,28 @@ import servicios.Conexion;
 public class DlgModificar extends javax.swing.JFrame {
 
     DlgConsultarAsistencias consultarA;
-    private final ArrayList info;
+//    private final ArrayList info;
     private Connection conexion = null;
     private Statement comando = null;
     private ResultSet resultados = null;
-    String instruccion;
-
+    Asistencia asis;
     /**
      * Creates new form DlgModificar
      *
-     * @param info
+     * @param asistencia
      */
-    public DlgModificar(ArrayList info) {
-
+    public DlgModificar(Asistencia asistencia) {
+        asis = asistencia;
         initComponents();
-        this.info = info;
-        nombre.setText((String) info.get(0));
-        horaEntrada.setText((String) info.get(1));
-        duracionClase.setText((String) info.get(2));
+//        this.info = info;
+//        nombre.setText((String) info.get(0));
+//        horaEntrada.setText((String) info.get(1));
+//        duracionClase.setText((String) info.get(2));
+            nombre.setText(asistencia.getNombre());
+            horaEntrada.setText(asistencia.getHoraLlegada());
+            duracionClase.setText(asistencia.getDuracion());
+            
+
     }
 
     /**
@@ -131,13 +137,12 @@ public class DlgModificar extends javax.swing.JFrame {
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
         try {
-            instruccion = "Update asistencias SET nombre =' " + nombre.getText()
-                    + "' horaLlegada =' " + horaEntrada.getText() + "' Duracion en clase = "
-                    + duracionClase.getText() + "Where nombre =' " + info.get(0).toString()+ "'"
-                    + "idCurso = 1 fecha = 2020-09-08";
-            Connection conexion = Conexion.obtener();
+            String instruccion = "UPDATE asistencias SET nombre ='"+ nombre.getText()+"', horaLlegada ='"+horaEntrada.getText()
+                    +"', duracion = '"+duracionClase.getText()+"' Where nombre ='"+asis.getNombre()+"' AND idCurso="+asis.getIdCurso()+" AND fecha ='"+asis.getFecha()+"'";
+            conexion = Conexion.obtener();
             comando = conexion.createStatement();
             resultados = comando.executeQuery(instruccion);
+            JOptionPane.showMessageDialog(this, "Se actualizó correctamente");
         } catch (SQLException ex) {
             Logger.getLogger(DlgModificar.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
