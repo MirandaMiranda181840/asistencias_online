@@ -27,6 +27,7 @@ public class DlgModificar extends javax.swing.JFrame {
     private Connection conexion = null;
     private Statement comando = null;
     private ResultSet resultados = null;
+    private int resulta2;
     Asistencia asis;
     /**
      * Creates new form DlgModificar
@@ -141,7 +142,7 @@ public class DlgModificar extends javax.swing.JFrame {
                     +"', duracion = '"+duracionClase.getText()+"' Where nombre ='"+asis.getNombre()+"' AND idCurso="+asis.getIdCurso()+" AND fecha ='"+asis.getFecha()+"'";
             conexion = Conexion.obtener();
             comando = conexion.createStatement();
-            resultados = comando.executeQuery(instruccion);
+            resulta2 = comando.executeUpdate(instruccion);
             JOptionPane.showMessageDialog(this, "Se actualizó correctamente");
         } catch (SQLException ex) {
             Logger.getLogger(DlgModificar.class.getName()).log(Level.SEVERE, null, ex);
