@@ -17,6 +17,7 @@ public class Frprincipal extends javax.swing.JFrame {
     DlgListarCursos listarC;
     DlgDatos datosC;
     DlgConsultarAsistencias consultarA;
+    DlgCambiar cambi;
     /**
      * Creates new form frprincipal
      */
@@ -40,6 +41,7 @@ public class Frprincipal extends javax.swing.JFrame {
         txtLogo = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         btnConsultarAsistencias = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -83,6 +85,14 @@ public class Frprincipal extends javax.swing.JFrame {
         });
         getContentPane().add(btnConsultarAsistencias, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, 170, -1));
 
+        jButton2.setText("Modificar asistencias");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 370, 170, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -109,6 +119,12 @@ public class Frprincipal extends javax.swing.JFrame {
         consultarA.setVisible(true);
         
     }//GEN-LAST:event_btnConsultarAsistenciasActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        cambi = new DlgCambiar(this, true);
+        cambi.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -154,6 +170,7 @@ public class Frprincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnConsultarAsistencias;
     private javax.swing.JButton btnListarCursos;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel txtLogo;
     // End of variables declaration//GEN-END:variables
 }
