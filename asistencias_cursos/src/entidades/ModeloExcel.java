@@ -143,4 +143,24 @@ public class ModeloExcel {
         }
     }
 
+    
+    public void guardarNuevaAsistenciaAlumno(Connection conexion, Asistencia asistencia){
+         PreparedStatement consulta;
+    
+            try{
+                consulta=(PreparedStatement) conexion.prepareStatement("INSERT INTO asistencias (idCurso,nombre,horaLlegada,duracion,horaSalida,asistencia,fecha) VALUES(?,?,?,?,?,?,?);");
+                consulta.setInt(1,Integer.parseInt(asistencia.getIdCurso()) );
+                consulta.setString(2,asistencia.getNombre());
+                consulta.setString(3,asistencia.getHoraLlegada());
+                consulta.setString(4,asistencia.getDuracion());
+                consulta.setString(5,asistencia.getHoraSalida());
+                consulta.setBoolean(6,asistencia.isAsistencia());
+                consulta.setString(7, asistencia.getFecha());
+                consulta.executeUpdate();
+            
+            } catch (SQLException ex) {
+                 Logger.getLogger(ModeloExcel.class.getName()).log(Level.SEVERE, null, ex);
+             }
+        
+    }
 }

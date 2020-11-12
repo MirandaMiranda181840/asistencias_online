@@ -31,7 +31,7 @@ public class DlgCambiar extends javax.swing.JDialog {
     ArrayList<String> info = new ArrayList<String>();
 
     DlgModificar modificarC;
-
+    DlgAgregarAsistenciaAlumno agregarAsistenciaAlumno;
     private Connection conexion = null;
     private Statement comando = null;
     private ResultSet resultados = null;
@@ -314,7 +314,11 @@ public class DlgCambiar extends javax.swing.JDialog {
     }//GEN-LAST:event_btnConsultarListaActionPerformed
 
     private void btnAgregarNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarNuevoActionPerformed
-        // TODO add your handling code here:
+       int claseSeleccionada = cbCursos.getSelectedIndex();
+         String idClaseSeleccionada = String.valueOf(cursos.get(claseSeleccionada).getId());
+        agregarAsistenciaAlumno = new DlgAgregarAsistenciaAlumno(Integer.parseInt(idClaseSeleccionada),txtFecha.getText());
+       agregarAsistenciaAlumno.setVisible(true);
+        this.setVisible(false);
         
     }//GEN-LAST:event_btnAgregarNuevoActionPerformed
 
