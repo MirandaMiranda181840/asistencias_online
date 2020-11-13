@@ -41,6 +41,7 @@ public class DlgListarCursos extends javax.swing.JDialog {
     public DlgListarCursos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        //this.setSize(498, 346);
         setLocationRelativeTo(null);
          try {
              leerDatos();
@@ -87,6 +88,9 @@ public class DlgListarCursos extends javax.swing.JDialog {
         tabla.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
         tabla.setFillsViewportHeight(true);               
         tabla.setModel(modelo);
+//        tabla.setAutoResizeMode(0);
+//        tabla.setSize(300, 300);
+       
         
         // Agregando elementos a la ventana
         this.getContentPane().add(desplazamiento, BorderLayout.NORTH);    
@@ -137,6 +141,7 @@ public class DlgListarCursos extends javax.swing.JDialog {
         btnRegresar = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cursos");
 
         btnRegresar.setText("Regresar");
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
@@ -150,14 +155,14 @@ public class DlgListarCursos extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(151, 151, 151)
+                .addGap(190, 190, 190)
                 .addComponent(btnRegresar)
-                .addContainerGap(162, Short.MAX_VALUE))
+                .addContainerGap(200, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(262, Short.MAX_VALUE)
+                .addContainerGap(330, Short.MAX_VALUE)
                 .addComponent(btnRegresar)
                 .addContainerGap())
         );

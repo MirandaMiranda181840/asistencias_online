@@ -44,6 +44,8 @@ public class DlgDatos extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         llenarComboBox();
+        lblAsistencia1.setVisible(false);
+        fechaLista.setVisible(false);
     }
 
     public void AgregarFiltro() {
@@ -113,15 +115,15 @@ public class DlgDatos extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         cbCursos = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        lblAsistencia1 = new javax.swing.JLabel();
         fechaLista = new javax.swing.JLabel();
         btnRegresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("IMPORTAR CON JAVA");
+        setTitle("Importar Asistencias");
 
+        btnImportar.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
         btnImportar.setText("Importar");
         btnImportar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,18 +142,20 @@ public class DlgDatos extends javax.swing.JFrame {
         jtDatos.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jtDatos);
 
+        jLabel1.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
         jLabel1.setText("Selecciona curso:");
 
+        cbCursos.setFont(new java.awt.Font("Lato", 2, 14)); // NOI18N
         cbCursos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbCursosActionPerformed(evt);
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
         jLabel2.setText("Selecciona archivo:");
 
-        jLabel3.setText("Fecha:");
-
+        jButton1.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
         jButton1.setText("Guardar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,10 +163,13 @@ public class DlgDatos extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setText("Asistencia de la Fecha:");
+        lblAsistencia1.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
+        lblAsistencia1.setText("Asistencia de la Fecha:");
 
+        fechaLista.setFont(new java.awt.Font("Lato", 3, 14)); // NOI18N
         fechaLista.setText("0");
 
+        btnRegresar.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
         btnRegresar.setText("Regresar");
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -176,32 +183,33 @@ public class DlgDatos extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 717, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cbCursos, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addGap(8, 8, 8)
-                                        .addComponent(btnImportar)
-                                        .addGap(125, 125, 125)
-                                        .addComponent(jLabel4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(fechaLista))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(215, 215, 215)
-                                .addComponent(jButton1)
+                                .addGap(20, 20, 20)
+                                .addComponent(jLabel2)
+                                .addGap(8, 8, 8)
+                                .addComponent(btnImportar)
+                                .addGap(62, 62, 62)
+                                .addComponent(lblAsistencia1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnRegresar)))
-                        .addGap(0, 379, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addComponent(fechaLista))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cbCursos, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnRegresar)
+                .addGap(276, 276, 276))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -210,22 +218,20 @@ public class DlgDatos extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnImportar)
-                        .addComponent(jLabel4)
+                        .addComponent(lblAsistencia1)
                         .addComponent(fechaLista))
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(cbCursos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(btnRegresar))
-                .addGap(56, 56, 56))
+                .addGap(23, 23, 23))
         );
 
         pack();
@@ -243,6 +249,10 @@ public class DlgDatos extends javax.swing.JFrame {
                     try {
                        
                         JOptionPane.showMessageDialog(null, modeloE.importar(archivo, jtDatos, fechaLista));
+                        
+                        lblAsistencia1.setVisible(true);
+                        fechaLista.setVisible(true);
+                        
                     } catch (IOException ex) {
                         Logger.getLogger(DlgDatos.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -253,6 +263,7 @@ public class DlgDatos extends javax.swing.JFrame {
 
             }
         }
+        
     }//GEN-LAST:event_btnImportarActionPerformed
 
     private void cbCursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCursosActionPerformed
@@ -290,9 +301,8 @@ public class DlgDatos extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable jtDatos;
+    private javax.swing.JLabel lblAsistencia1;
     // End of variables declaration//GEN-END:variables
 }

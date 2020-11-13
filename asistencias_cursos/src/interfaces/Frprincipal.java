@@ -23,7 +23,7 @@ public class Frprincipal extends javax.swing.JFrame {
      */
     public Frprincipal() {
         initComponents();
-        this.setSize(375, 473);
+       this.setSize(565, 410);
         setLocationRelativeTo(null);
     }
 
@@ -36,95 +36,125 @@ public class Frprincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        agregarCurso = new javax.swing.JButton();
-        btnListarCursos = new javax.swing.JButton();
         txtLogo = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        btnConsultarAsistencias = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        miNuevoCurso = new javax.swing.JMenuItem();
+        miCursosRegistrados = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        miImportar = new javax.swing.JMenuItem();
+        miConsultarAsis = new javax.swing.JMenuItem();
+        miModificar = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        agregarCurso.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
-        agregarCurso.setText("Agregar curso");
-        agregarCurso.addActionListener(new java.awt.event.ActionListener() {
+        txtLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo2.png"))); // NOI18N
+        getContentPane().add(txtLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 400, 190));
+
+        jLabel1.setFont(new java.awt.Font("Lato", 0, 18)); // NOI18N
+        jLabel1.setText("Sistema para manejar los cursos virtuales");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/174675.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, -1, -1));
+
+        jMenu1.setText("Cursos");
+        jMenu1.setFont(new java.awt.Font("Lato", 1, 16)); // NOI18N
+
+        miNuevoCurso.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
+        miNuevoCurso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton-agregar.png"))); // NOI18N
+        miNuevoCurso.setText("Agregar nuevo");
+        miNuevoCurso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                agregarCursoActionPerformed(evt);
+                miNuevoCursoActionPerformed(evt);
             }
         });
-        getContentPane().add(agregarCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, 170, -1));
+        jMenu1.add(miNuevoCurso);
 
-        btnListarCursos.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
-        btnListarCursos.setText("Cursos registrados");
-        btnListarCursos.addActionListener(new java.awt.event.ActionListener() {
+        miCursosRegistrados.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
+        miCursosRegistrados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/consultar.png"))); // NOI18N
+        miCursosRegistrados.setText("Consultar");
+        miCursosRegistrados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnListarCursosActionPerformed(evt);
+                miCursosRegistradosActionPerformed(evt);
             }
         });
-        getContentPane().add(btnListarCursos, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 170, -1));
+        jMenu1.add(miCursosRegistrados);
 
-        txtLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo.png"))); // NOI18N
-        getContentPane().add(txtLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 280, 160));
+        jMenuBar1.add(jMenu1);
 
-        jButton1.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
-        jButton1.setText("Importar asistencias");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jMenu2.setText("Asistencias");
+        jMenu2.setFont(new java.awt.Font("Lato", 1, 16)); // NOI18N
+
+        miImportar.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
+        miImportar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton-agregar.png"))); // NOI18N
+        miImportar.setText("Importar lista");
+        miImportar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                miImportarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, 170, 30));
+        jMenu2.add(miImportar);
 
-        btnConsultarAsistencias.setText("Consultar asistencias");
-        btnConsultarAsistencias.setToolTipText("");
-        btnConsultarAsistencias.addActionListener(new java.awt.event.ActionListener() {
+        miConsultarAsis.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
+        miConsultarAsis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/consultar.png"))); // NOI18N
+        miConsultarAsis.setText("Consultar");
+        miConsultarAsis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConsultarAsistenciasActionPerformed(evt);
+                miConsultarAsisActionPerformed(evt);
             }
         });
-        getContentPane().add(btnConsultarAsistencias, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, 170, -1));
+        jMenu2.add(miConsultarAsis);
 
-        jButton2.setText("Modificar asistencias");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        miModificar.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
+        miModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/modificar.png"))); // NOI18N
+        miModificar.setText("Modificar");
+        miModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                miModificarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 370, 170, -1));
+        jMenu2.add(miModificar);
+
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void agregarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarCursoActionPerformed
-        // TODO add your handling code here:
-        agregarC = new DlgAgregarCurso(this, true);
-        agregarC.setVisible(true);
-    }//GEN-LAST:event_agregarCursoActionPerformed
-
-    private void btnListarCursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarCursosActionPerformed
+    private void miCursosRegistradosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miCursosRegistradosActionPerformed
         // TODO add your handling code here:
         listarC = new DlgListarCursos(this, true);
         listarC.setVisible(true);
-    }//GEN-LAST:event_btnListarCursosActionPerformed
+    }//GEN-LAST:event_miCursosRegistradosActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        datosC = new DlgDatos();
-        datosC.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void btnConsultarAsistenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarAsistenciasActionPerformed
+    private void miConsultarAsisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miConsultarAsisActionPerformed
         // TODO add your handling code here:
         consultarA = new DlgConsultarAsistencias(this, true);
         consultarA.setVisible(true);
-        
-    }//GEN-LAST:event_btnConsultarAsistenciasActionPerformed
+    }//GEN-LAST:event_miConsultarAsisActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void miImportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miImportarActionPerformed
+        // TODO add your handling code here:
+        datosC = new DlgDatos();
+        datosC.setVisible(true);
+    }//GEN-LAST:event_miImportarActionPerformed
+
+    private void miModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miModificarActionPerformed
         // TODO add your handling code here:
         cambi = new DlgCambiar(this, true);
         cambi.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_miModificarActionPerformed
+
+    private void miNuevoCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miNuevoCursoActionPerformed
+        // TODO add your handling code here:
+        agregarC = new DlgAgregarCurso(this, true);
+        agregarC.setVisible(true);
+    }//GEN-LAST:event_miNuevoCursoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -166,11 +196,16 @@ public class Frprincipal extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton agregarCurso;
-    private javax.swing.JButton btnConsultarAsistencias;
-    private javax.swing.JButton btnListarCursos;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem miConsultarAsis;
+    private javax.swing.JMenuItem miCursosRegistrados;
+    private javax.swing.JMenuItem miImportar;
+    private javax.swing.JMenuItem miModificar;
+    private javax.swing.JMenuItem miNuevoCurso;
     private javax.swing.JLabel txtLogo;
     // End of variables declaration//GEN-END:variables
 }

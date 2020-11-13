@@ -36,6 +36,7 @@ public class DlgCambiar extends javax.swing.JDialog {
     private Statement comando = null;
     private ResultSet resultados = null;
     private ResultSet resultadosCursos = null;
+    private boolean tablaLlena = false;
     
     /**
      * Creates new form DlgCambiar
@@ -86,6 +87,7 @@ public class DlgCambiar extends javax.swing.JDialog {
 
         if (resultadosCursos.next() == false) {
             JOptionPane.showMessageDialog(this, "No hay registros para ese curso con esa fecha");
+            tablaLlena = false;
         } else {
             while (resultadosCursos.next() == true) {
 
@@ -110,8 +112,9 @@ public class DlgCambiar extends javax.swing.JDialog {
                 System.out.println("Se añadió: " + asis.toString());
                 modelo.addRow(new Object[]{nomb, horaLlegada, duracion});
             }
+            tablaLlena = true;
         }
-
+        
     }
 
     private void llenarComboBox() {
@@ -166,7 +169,9 @@ public class DlgCambiar extends javax.swing.JDialog {
         btnAgregarNuevo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Modificar Asistencias");
 
+        btnRegresar.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
         btnRegresar.setText("Regresar");
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -174,6 +179,7 @@ public class DlgCambiar extends javax.swing.JDialog {
             }
         });
 
+        botonGuardar.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
         botonGuardar.setText("Modificar");
         botonGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -181,13 +187,20 @@ public class DlgCambiar extends javax.swing.JDialog {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
         jLabel1.setText("Seleccione el curso: ");
 
+        cbCursos.setFont(new java.awt.Font("Lato", 2, 14)); // NOI18N
+
+        jLabel2.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
         jLabel2.setText("Ingrese fecha:");
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
-        jLabel3.setText("Formato: aaaa/mm/dd");
+        txtFecha.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
 
+        jLabel3.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
+        jLabel3.setText("Formato: aaaa-mm-dd");
+
+        btnConsultarLista.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
         btnConsultarLista.setText("Consultar lista");
         btnConsultarLista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -206,6 +219,7 @@ public class DlgCambiar extends javax.swing.JDialog {
         jtDatos.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jtDatos);
 
+        btnAgregarNuevo.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
         btnAgregarNuevo.setText("Agregar nuevo");
         btnAgregarNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -223,39 +237,39 @@ public class DlgCambiar extends javax.swing.JDialog {
                         .addContainerGap()
                         .addComponent(jScrollPane1))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(72, 72, 72)
+                        .addComponent(botonGuardar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAgregarNuevo)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnRegresar)
+                        .addGap(0, 65, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbCursos, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cbCursos, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(12, 12, 12)
-                                                .addComponent(jLabel3))))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(189, 189, 189)
-                                .addComponent(btnConsultarLista))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(78, 78, 78)
-                                .addComponent(botonGuardar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnAgregarNuevo)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnRegresar)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                                .addGap(12, 12, 12)
+                                .addComponent(jLabel3))
+                            .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnConsultarLista)
+                .addGap(185, 185, 185))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(cbCursos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -265,11 +279,11 @@ public class DlgCambiar extends javax.swing.JDialog {
                     .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
-                .addGap(37, 37, 37)
+                .addGap(27, 27, 27)
                 .addComponent(btnConsultarLista)
-                .addGap(28, 28, 28)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegresar)
                     .addComponent(botonGuardar)
@@ -286,10 +300,21 @@ public class DlgCambiar extends javax.swing.JDialog {
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
-        Asistencia asistenciaSeleccionada = asistencias.get(jtDatos.getSelectedRow());
-        modificarC = new DlgModificar(asistenciaSeleccionada);
-        modificarC.setVisible(true);
-        this.setVisible(false);
+        if(tablaLlena){
+            
+            if(jtDatos.getSelectedRow() < 0){
+                JOptionPane.showMessageDialog(this, "Seleccione un alumno");
+            }else{
+                Asistencia asistenciaSeleccionada = asistencias.get(jtDatos.getSelectedRow());
+                modificarC = new DlgModificar(asistenciaSeleccionada);
+                modificarC.setVisible(true);
+                this.setVisible(false);
+            }
+                      
+        }else{
+            JOptionPane.showMessageDialog(this, "Consulte una lista primero");
+        }
+        
 
     }//GEN-LAST:event_botonGuardarActionPerformed
 
@@ -304,6 +329,7 @@ public class DlgCambiar extends javax.swing.JDialog {
                 System.out.println("ID DE CLASE: " + idClaseSeleccionada);
                 leerCursos(fechaTexto, idClaseSeleccionada);
                 llenaTabla();
+                
             } catch (ClassNotFoundException | SQLException ex) {
                 Logger.getLogger(DlgConsultarAsistencias.class.getName()).log(Level.SEVERE, null, ex);
                 System.out.println(ex.getMessage());
@@ -314,11 +340,17 @@ public class DlgCambiar extends javax.swing.JDialog {
     }//GEN-LAST:event_btnConsultarListaActionPerformed
 
     private void btnAgregarNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarNuevoActionPerformed
-       int claseSeleccionada = cbCursos.getSelectedIndex();
-         String idClaseSeleccionada = String.valueOf(cursos.get(claseSeleccionada).getId());
-        agregarAsistenciaAlumno = new DlgAgregarAsistenciaAlumno(Integer.parseInt(idClaseSeleccionada),txtFecha.getText());
-       agregarAsistenciaAlumno.setVisible(true);
-        this.setVisible(false);
+      if(tablaLlena){
+          int claseSeleccionada = cbCursos.getSelectedIndex();
+          String idClaseSeleccionada = String.valueOf(cursos.get(claseSeleccionada).getId());
+          agregarAsistenciaAlumno = new DlgAgregarAsistenciaAlumno(Integer.parseInt(idClaseSeleccionada),txtFecha.getText());
+          agregarAsistenciaAlumno.setVisible(true);
+          this.setVisible(false);
+      }else{
+          JOptionPane.showMessageDialog(this, "Consulte una lista primero");
+      }
+        
+        
         
     }//GEN-LAST:event_btnAgregarNuevoActionPerformed
 

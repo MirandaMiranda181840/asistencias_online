@@ -23,7 +23,7 @@ public class Conexion {
             //modificar con tus params
             //Cris:"jdbc:mysql://localhost:3306/asistencias", "root", ""
             //Miranda:"jdbc:mysql://localhost:3306/asistencias", "root", "1234"
-            cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/asistencias", "root", "");
+            cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/asistencias", "root", "1234");
          } catch (SQLException ex) {
             throw new SQLException(ex);
          } catch (ClassNotFoundException ex) {

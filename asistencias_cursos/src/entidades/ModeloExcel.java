@@ -36,7 +36,7 @@ public class ModeloExcel {
         String respuesta = "No se pudo realizar la importación.";
         DefaultTableModel modelo = new DefaultTableModel();
         tablaD.setModel(modelo);
-        tablaD.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        //tablaD.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         modelo.addColumn("Nombre");
         modelo.addColumn("Asistencia");
         modelo.addColumn("Hora Entrada");
@@ -52,6 +52,7 @@ public class ModeloExcel {
          
             br = new BufferedReader(new FileReader(archivo.getAbsolutePath()));
             String line = br.readLine();
+            
             while (null != line) {
                 //para obtener la fecha
                 if(contadorLineasFile==2){
@@ -62,14 +63,21 @@ public class ModeloExcel {
                     //splitea el nombre y la asistencia, pero las horas aun quedan pegadas
                 String[] firstSplit = line.split(",");
                //splitea las horas, en valores individuales (hora entrada, duracion, salida)
-                String [] secondSplit=splitData(firstSplit[2]);
-                String[] row={firstSplit[0], firstSplit [1], secondSplit [0], secondSplit [1], secondSplit [2]};   
-               agregarCurso(firstSplit[0], firstSplit [1], secondSplit [0], secondSplit [1], secondSplit [2],fecha);
-                
-               System.out.println(Arrays.toString(row));
-                    System.out.println(fecha);
-                labelFecha.setText(fecha);
-                modelo.addRow(row);
+                    
+               if(firstSplit.length == 1){                  
+                    labelFecha.setText(fecha);
+                    String[] row2={firstSplit[0], "", "", "", "",fecha};   
+                    System.out.println(Arrays.toString(row2));
+                    modelo.addRow(row2);
+               }else{
+                    String [] secondSplit=splitData(firstSplit[2]);
+                    String[] row={firstSplit[0], firstSplit [1], secondSplit [0], secondSplit [1], secondSplit [2]};   
+                    agregarCurso(firstSplit[0], firstSplit [1], secondSplit [0], secondSplit [1], secondSplit [2],fecha);
+                     System.out.println(Arrays.toString(row));
+                     labelFecha.setText(fecha);
+                     modelo.addRow(row);
+               }          
+              
                 }
       
                 line = br.readLine();

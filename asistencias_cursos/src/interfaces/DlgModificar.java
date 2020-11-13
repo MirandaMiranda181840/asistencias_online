@@ -13,6 +13,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import servicios.Conexion;
 
@@ -37,13 +38,11 @@ public class DlgModificar extends javax.swing.JFrame {
     public DlgModificar(Asistencia asistencia) {
         asis = asistencia;
         initComponents();
-//        this.info = info;
-//        nombre.setText((String) info.get(0));
-//        horaEntrada.setText((String) info.get(1));
-//        duracionClase.setText((String) info.get(2));
+        setLocationRelativeTo(null);
             nombre.setText(asistencia.getNombre());
             horaEntrada.setText(asistencia.getHoraLlegada());
             duracionClase.setText(asistencia.getDuracion());
+            horaSalida.setText(asistencia.getHoraSalida());
             
 
     }
@@ -65,9 +64,13 @@ public class DlgModificar extends javax.swing.JFrame {
         nombre = new javax.swing.JTextField();
         horaEntrada = new javax.swing.JTextField();
         duracionClase = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        horaSalida = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Modificar alumno");
 
+        guardar.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
         guardar.setText("Guardar");
         guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,6 +78,7 @@ public class DlgModificar extends javax.swing.JFrame {
             }
         });
 
+        regresar.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
         regresar.setText("Regresar");
         regresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,78 +86,112 @@ public class DlgModificar extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
         jLabel1.setText("Nombre:");
 
+        jLabel2.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
         jLabel2.setText("Hora de Entrada:");
 
+        jLabel3.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
         jLabel3.setText("Duracion en Clase:");
+
+        nombre.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
+
+        horaEntrada.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
+
+        duracionClase.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
+
+        jLabel4.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
+        jLabel4.setText("Hora de Salida: ");
+
+        horaSalida.setFont(new java.awt.Font("Lato", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(74, 74, 74)
-                .addComponent(guardar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
-                .addComponent(regresar)
-                .addGap(72, 72, 72))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(55, 55, 55)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(nombre)
-                    .addComponent(horaEntrada)
-                    .addComponent(duracionClase, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(guardar)
+                        .addGap(18, 18, 18)
+                        .addComponent(regresar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(horaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(nombre)
+                                .addComponent(horaEntrada)
+                                .addComponent(duracionClase, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(63, 63, 63)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(horaEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(horaEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(duracionClase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(guardar)
-                    .addComponent(regresar))
-                .addGap(35, 35, 35))
+                    .addComponent(jLabel4)
+                    .addComponent(horaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(regresar)
+                    .addComponent(guardar))
+                .addGap(51, 51, 51))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
-        try {
-            String instruccion = "UPDATE asistencias SET nombre ='"+ nombre.getText()+"', horaLlegada ='"+horaEntrada.getText()
-                    +"', duracion = '"+duracionClase.getText()+"' Where nombre ='"+asis.getNombre()+"' AND idCurso="+asis.getIdCurso()+" AND fecha ='"+asis.getFecha()+"'";
-            conexion = Conexion.obtener();
-            comando = conexion.createStatement();
-            resulta2 = comando.executeUpdate(instruccion);
-            JOptionPane.showMessageDialog(this, "Se actualizó correctamente");
-        } catch (SQLException ex) {
-            Logger.getLogger(DlgModificar.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(DlgModificar.class.getName()).log(Level.SEVERE, null, ex);
+        
+        boolean nombreb = Pattern.matches("[a-zA-Z áéíóú]+\\.?", nombre.getText());
+        boolean horaLlegadab = Pattern.matches("^([01]?[0-9]|2[0-3]):[0-5][0-9]$", horaEntrada.getText());
+        boolean duracionb = Pattern.matches("^[0-9]*min", duracionClase.getText());
+        boolean horaSalidab = Pattern.matches("^([01]?[0-9]|2[0-3]):[0-5][0-9]$", horaSalida.getText());
+        
+        if(nombreb && horaLlegadab && duracionb && horaSalidab){
+            try {
+                String instruccion = "UPDATE asistencias SET nombre ='"+ nombre.getText()+"', horaLlegada ='"+horaEntrada.getText()+"', horaSalida='"+horaSalida.getText()
+                        +"', duracion = '"+duracionClase.getText()+"' Where nombre ='"+asis.getNombre()+"' AND idCurso="+asis.getIdCurso()+" AND fecha ='"+asis.getFecha()+"'";
+                conexion = Conexion.obtener();
+                comando = conexion.createStatement();
+                resulta2 = comando.executeUpdate(instruccion);
+                JOptionPane.showMessageDialog(this, "Se actualizó correctamente");
+            } catch (SQLException | ClassNotFoundException ex) {
+                Logger.getLogger(DlgModificar.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else{
+            JOptionPane.showMessageDialog(this, "Ingrese todos los datos correctamente");
         }
+        
+        
     }//GEN-LAST:event_guardarActionPerformed
 
     private void regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarActionPerformed
         consultarA = new DlgConsultarAsistencias(this, true);
         consultarA.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_regresarActionPerformed
 
 
@@ -161,9 +199,11 @@ public class DlgModificar extends javax.swing.JFrame {
     private javax.swing.JTextField duracionClase;
     private javax.swing.JButton guardar;
     private javax.swing.JTextField horaEntrada;
+    private javax.swing.JTextField horaSalida;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField nombre;
     private javax.swing.JButton regresar;
     // End of variables declaration//GEN-END:variables
