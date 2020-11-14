@@ -10,6 +10,7 @@ package servicios;
  * @author miran
  */
 
+
 import java.sql.*;
 
 public class Conexion {
@@ -50,6 +51,13 @@ public class Conexion {
     return rs.next();
     }
    
+   public boolean ifExistsUnidad(String sSQL, String indice, String idCurso) throws SQLException {
+    PreparedStatement ps = cnx.prepareStatement(sSQL);
+    ps.setString(1, indice);
+    ps.setString(2, idCurso);
+    ResultSet rs = ps.executeQuery();
+    return rs.next();
+    }
    
    
 }

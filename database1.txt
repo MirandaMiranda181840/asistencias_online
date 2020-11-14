@@ -3,3 +3,6 @@ create database asistencias;
 
 
 CREATE TABLE `asistencias`.`cursos` ( `id` INT(10) NOT NULL AUTO_INCREMENT , `nombre` VARCHAR(50) NOT NULL , `periodo` VARCHAR(15) NOT NULL , `dias` VARCHAR(15) NOT NULL , `hora` VARCHAR(15) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+
+CREATE TABLE `asistencias`.`asistenciass` ( `indice` INT(15) NOT NULL , `nombre` VARCHAR(50) NOT NULL , `descripcion` TEXT NOT NULL , `idCurso` INT(5) NOT NULL ) ENGINE = InnoDB;

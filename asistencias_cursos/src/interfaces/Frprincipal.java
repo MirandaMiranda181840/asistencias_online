@@ -18,6 +18,8 @@ public class Frprincipal extends javax.swing.JFrame {
     DlgDatos datosC;
     DlgConsultarAsistencias consultarA;
     DlgCambiar cambi;
+    DlgAgregarUnidad agregarU;
+    DlgConsultarUnidades consultarU;
     /**
      * Creates new form frprincipal
      */
@@ -47,6 +49,9 @@ public class Frprincipal extends javax.swing.JFrame {
         miImportar = new javax.swing.JMenuItem();
         miConsultarAsis = new javax.swing.JMenuItem();
         miModificar = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        miAgregarUnidad = new javax.swing.JMenuItem();
+        miConsultarUnidades = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -121,6 +126,29 @@ public class Frprincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
+        jMenu3.setText("Unidades");
+        jMenu3.setFont(new java.awt.Font("Lato", 1, 16)); // NOI18N
+
+        miAgregarUnidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton-agregar.png"))); // NOI18N
+        miAgregarUnidad.setText("Agregar");
+        miAgregarUnidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miAgregarUnidadActionPerformed(evt);
+            }
+        });
+        jMenu3.add(miAgregarUnidad);
+
+        miConsultarUnidades.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/consultar.png"))); // NOI18N
+        miConsultarUnidades.setText("Consultar");
+        miConsultarUnidades.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miConsultarUnidadesActionPerformed(evt);
+            }
+        });
+        jMenu3.add(miConsultarUnidades);
+
+        jMenuBar1.add(jMenu3);
+
         setJMenuBar(jMenuBar1);
 
         pack();
@@ -155,6 +183,18 @@ public class Frprincipal extends javax.swing.JFrame {
         agregarC = new DlgAgregarCurso(this, true);
         agregarC.setVisible(true);
     }//GEN-LAST:event_miNuevoCursoActionPerformed
+
+    private void miAgregarUnidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miAgregarUnidadActionPerformed
+        // TODO add your handling code here:
+        agregarU = new DlgAgregarUnidad(this, true);
+        agregarU.setVisible(true);
+    }//GEN-LAST:event_miAgregarUnidadActionPerformed
+
+    private void miConsultarUnidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miConsultarUnidadesActionPerformed
+        // TODO add your handling code here:
+            consultarU = new DlgConsultarUnidades(this, true);
+            consultarU.setVisible(true);
+    }//GEN-LAST:event_miConsultarUnidadesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -200,8 +240,11 @@ public class Frprincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem miAgregarUnidad;
     private javax.swing.JMenuItem miConsultarAsis;
+    private javax.swing.JMenuItem miConsultarUnidades;
     private javax.swing.JMenuItem miCursosRegistrados;
     private javax.swing.JMenuItem miImportar;
     private javax.swing.JMenuItem miModificar;
