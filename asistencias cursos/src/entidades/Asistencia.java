@@ -12,8 +12,23 @@ import java.util.Objects;
  * @author crisb
  */
 public class Asistencia {
-    private String idCurso, nombre, horaLlegada, duracion, horaSalida,fecha;
+    private String idCurso, nombre, horaLlegada, duracion, horaSalida,fecha, unidadIndice, unidadNombre;
     private boolean asistencia;
+    private int asistenciasUnidad;
+
+    public Asistencia(String idCurso, String nombre, String horaLlegada, String duracion, String horaSalida, String fecha, String unidadIndice, String unidadNombre, boolean asistencia) {
+        this.idCurso = idCurso;
+        this.nombre = nombre;
+        this.horaLlegada = horaLlegada;
+        this.duracion = duracion;
+        this.horaSalida = horaSalida;
+        this.fecha = fecha;
+        this.unidadIndice = unidadIndice;
+        this.unidadNombre = unidadNombre;
+        this.asistencia = asistencia;
+    }
+
+    
 
     public Asistencia(String idCurso, String nombre, String horaLlegada, String duracion, String horaSalida, String fecha, boolean asistencia) {
         this.idCurso = idCurso;
@@ -40,6 +55,45 @@ public class Asistencia {
         this.duracion = duracion;
         this.horaSalida = horaSalida;
         this.asistencia = asistencia;
+    }
+
+    public Asistencia(String nombre, int asistenciasUnidad) {
+        this.nombre = nombre;
+        this.asistenciasUnidad = asistenciasUnidad;
+    }
+
+    public Asistencia(String nombre, String horaLlegada, String duracion, String fecha) {
+        this.nombre = nombre;
+        this.horaLlegada = horaLlegada;
+        this.duracion = duracion;
+        this.fecha = fecha;
+    }
+    
+
+    public int getAsistenciasUnidad() {
+        return asistenciasUnidad;
+    }
+
+    public void setAsistenciasUnidad(int asistenciasUnidad) {
+        this.asistenciasUnidad = asistenciasUnidad;
+    }
+    
+    public String getUnidadNombre() {
+        return unidadNombre;
+    }
+
+    public void setUnidadNombre(String unidadNombre) {
+        this.unidadNombre = unidadNombre;
+    }
+
+    
+    
+    public String getUnidadIndice() {
+        return unidadIndice;
+    }
+
+    public void setUnidadIndice(String unidadIndice) {
+        this.unidadIndice = unidadIndice;
     }
 
     public String getIdCurso() {

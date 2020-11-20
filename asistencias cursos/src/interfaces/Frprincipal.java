@@ -38,6 +38,7 @@ public class Frprincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
         txtLogo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -45,7 +46,7 @@ public class Frprincipal extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         miNuevoCurso = new javax.swing.JMenuItem();
         miCursosRegistrados = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        Asistencias = new javax.swing.JMenu();
         miImportar = new javax.swing.JMenuItem();
         miConsultarAsis = new javax.swing.JMenuItem();
         miModificar = new javax.swing.JMenuItem();
@@ -91,8 +92,8 @@ public class Frprincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Asistencias");
-        jMenu2.setFont(new java.awt.Font("Lato", 1, 16)); // NOI18N
+        Asistencias.setText("Asistencias");
+        Asistencias.setFont(new java.awt.Font("Lato", 1, 16)); // NOI18N
 
         miImportar.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
         miImportar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton-agregar.png"))); // NOI18N
@@ -102,7 +103,7 @@ public class Frprincipal extends javax.swing.JFrame {
                 miImportarActionPerformed(evt);
             }
         });
-        jMenu2.add(miImportar);
+        Asistencias.add(miImportar);
 
         miConsultarAsis.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
         miConsultarAsis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/consultar.png"))); // NOI18N
@@ -112,7 +113,7 @@ public class Frprincipal extends javax.swing.JFrame {
                 miConsultarAsisActionPerformed(evt);
             }
         });
-        jMenu2.add(miConsultarAsis);
+        Asistencias.add(miConsultarAsis);
 
         miModificar.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
         miModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/modificar.png"))); // NOI18N
@@ -122,9 +123,9 @@ public class Frprincipal extends javax.swing.JFrame {
                 miModificarActionPerformed(evt);
             }
         });
-        jMenu2.add(miModificar);
+        Asistencias.add(miModificar);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(Asistencias);
 
         jMenu3.setText("Unidades");
         jMenu3.setFont(new java.awt.Font("Lato", 1, 16)); // NOI18N
@@ -236,12 +237,13 @@ public class Frprincipal extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu Asistencias;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JMenuItem miAgregarUnidad;
     private javax.swing.JMenuItem miConsultarAsis;
     private javax.swing.JMenuItem miConsultarUnidades;

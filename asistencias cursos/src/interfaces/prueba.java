@@ -28,23 +28,38 @@ public class prueba {
         Unidad unidad3 = new Unidad("Nombre3", 3, "des", 1);
         Unidad unidad4 = new Unidad("Nombre4", 4, "des", 1);
         
-        List<Unidad> array = new ArrayList();
+        ArrayList<Unidad> array = new ArrayList();
         array.add(unidad2);
         array.add(unidad1);
         array.add(unidad4);
         array.add(unidad3);
+        
+        //System.out.println(array.get(3));
        
-        Collections.sort(array);
+//        Collections.sort(array);
+//        
+//        for(Unidad elemento:array){
+//            System.out.println(elemento);
+//        }
+//        System.out.println("----------");
+//        array.removeAll(array);
+//        System.out.println(array);
         
-        for(Unidad elemento:array){
-            System.out.println(elemento);
-        }
-        System.out.println("----------");
-        array.removeAll(array);
-        System.out.println(array);
+        
+        String aver2 = "64min";
+        String aver2Aux  = aver2.replaceAll("min", "");
+        int aver2AuxNum = Integer.valueOf(aver2Aux);
+        
+        String aver3 = "6min";
+        String aver3Aux  = aver3.replaceAll("min", "");
+        int aver3AuxNum = Integer.valueOf(aver3Aux);
+        
+        int prueba =  Integer.valueOf(aver2Aux) + Integer.valueOf(aver3Aux);
         
         
-        
+        System.out.println("El aver 2: "+ aver2Aux);
+        System.out.println("El aver 3: "+ aver3Aux);
+        System.out.println("Suma: " + prueba);
        
         
     }

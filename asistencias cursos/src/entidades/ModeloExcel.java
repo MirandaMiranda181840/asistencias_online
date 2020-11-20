@@ -130,12 +130,14 @@ public class ModeloExcel {
         asistencias.add(asistencia);
     }
     //aqui se guardara en la bdd
-    public void guardar(Connection conexion, String idCurso){
+    public void guardar(Connection conexion, String idCurso, String unidadIndice, String unidadNombre){
          PreparedStatement consulta;
         for (int i = 0; i < asistencias.size(); i++) {
             asistencias.get(i).setIdCurso(idCurso);
+            asistencias.get(i).setUnidadIndice(unidadIndice);
+            asistencias.get(i).setUnidadNombre(unidadNombre);
             try{
-                consulta=(PreparedStatement) conexion.prepareStatement("INSERT INTO asistencias (idCurso,nombre,horaLlegada,duracion,horaSalida,asistencia,fecha) VALUES(?,?,?,?,?,?,?);");
+                consulta=(PreparedStatement) conexion.prepareStatement("INSERT INTO asistencias(idCurso, nombre, horaLlegada, duracion, horaSalida, asistencia, fecha, unidadIndice, unidadNombre) VALUES (?,?,?,?,?,?,?,?,?);");
                 consulta.setInt(1,Integer.parseInt(idCurso) );
                 consulta.setString(2,asistencias.get(i).getNombre());
                 consulta.setString(3,asistencias.get(i).getHoraLlegada());
@@ -143,6 +145,8 @@ public class ModeloExcel {
                 consulta.setString(5,asistencias.get(i).getHoraSalida());
                 consulta.setBoolean(6,asistencias.get(i).isAsistencia());
                 consulta.setString(7, asistencias.get(i).getFecha());
+                consulta.setInt(8, Integer.parseInt(asistencias.get(i).getUnidadIndice()));
+                consulta.setString(9, asistencias.get(i).getUnidadNombre());
                 consulta.executeUpdate();
             
             } catch (SQLException ex) {
@@ -156,7 +160,7 @@ public class ModeloExcel {
          PreparedStatement consulta;
     
             try{
-                consulta=(PreparedStatement) conexion.prepareStatement("INSERT INTO asistencias (idCurso,nombre,horaLlegada,duracion,horaSalida,asistencia,fecha) VALUES(?,?,?,?,?,?,?);");
+                consulta=(PreparedStatement) conexion.prepareStatement("INSERT INTO asistencias (idCurso,nombre,horaLlegada,duracion,horaSalida,asistencia,fecha, unidadIndice, unidadNombre) VALUES(?,?,?,?,?,?,?,?,?);");
                 consulta.setInt(1,Integer.parseInt(asistencia.getIdCurso()) );
                 consulta.setString(2,asistencia.getNombre());
                 consulta.setString(3,asistencia.getHoraLlegada());
@@ -164,6 +168,8 @@ public class ModeloExcel {
                 consulta.setString(5,asistencia.getHoraSalida());
                 consulta.setBoolean(6,asistencia.isAsistencia());
                 consulta.setString(7, asistencia.getFecha());
+                consulta.setInt(8, Integer.parseInt(asistencia.getUnidadIndice()));
+                consulta.setString(9, asistencia.getUnidadNombre());
                 consulta.executeUpdate();
             
             } catch (SQLException ex) {
