@@ -20,6 +20,7 @@ public class Frprincipal extends javax.swing.JFrame {
     DlgCambiar cambi;
     DlgAgregarUnidad agregarU;
     DlgConsultarUnidades consultarU;
+    DlgConsultarAsistenciaUnidades consultarAsisUni;
     /**
      * Creates new form frprincipal
      */
@@ -46,10 +47,11 @@ public class Frprincipal extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         miNuevoCurso = new javax.swing.JMenuItem();
         miCursosRegistrados = new javax.swing.JMenuItem();
-        Asistencias = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
         miImportar = new javax.swing.JMenuItem();
         miConsultarAsis = new javax.swing.JMenuItem();
         miModificar = new javax.swing.JMenuItem();
+        miConsultarAsisUnidad = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         miAgregarUnidad = new javax.swing.JMenuItem();
         miConsultarUnidades = new javax.swing.JMenuItem();
@@ -92,8 +94,8 @@ public class Frprincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        Asistencias.setText("Asistencias");
-        Asistencias.setFont(new java.awt.Font("Lato", 1, 16)); // NOI18N
+        jMenu2.setText("Asistencias");
+        jMenu2.setFont(new java.awt.Font("Lato", 1, 16)); // NOI18N
 
         miImportar.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
         miImportar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton-agregar.png"))); // NOI18N
@@ -103,7 +105,7 @@ public class Frprincipal extends javax.swing.JFrame {
                 miImportarActionPerformed(evt);
             }
         });
-        Asistencias.add(miImportar);
+        jMenu2.add(miImportar);
 
         miConsultarAsis.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
         miConsultarAsis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/consultar.png"))); // NOI18N
@@ -113,7 +115,7 @@ public class Frprincipal extends javax.swing.JFrame {
                 miConsultarAsisActionPerformed(evt);
             }
         });
-        Asistencias.add(miConsultarAsis);
+        jMenu2.add(miConsultarAsis);
 
         miModificar.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
         miModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/modificar.png"))); // NOI18N
@@ -123,9 +125,19 @@ public class Frprincipal extends javax.swing.JFrame {
                 miModificarActionPerformed(evt);
             }
         });
-        Asistencias.add(miModificar);
+        jMenu2.add(miModificar);
 
-        jMenuBar1.add(Asistencias);
+        miConsultarAsisUnidad.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
+        miConsultarAsisUnidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/consultar.png"))); // NOI18N
+        miConsultarAsisUnidad.setText("Consultar por unidad");
+        miConsultarAsisUnidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miConsultarAsisUnidadActionPerformed(evt);
+            }
+        });
+        jMenu2.add(miConsultarAsisUnidad);
+
+        jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Unidades");
         jMenu3.setFont(new java.awt.Font("Lato", 1, 16)); // NOI18N
@@ -197,6 +209,12 @@ public class Frprincipal extends javax.swing.JFrame {
             consultarU.setVisible(true);
     }//GEN-LAST:event_miConsultarUnidadesActionPerformed
 
+    private void miConsultarAsisUnidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miConsultarAsisUnidadActionPerformed
+        // TODO add your handling code here:
+        consultarAsisUni = new DlgConsultarAsistenciaUnidades(this, true);
+        consultarAsisUni.setVisible(true);
+    }//GEN-LAST:event_miConsultarAsisUnidadActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -237,15 +255,16 @@ public class Frprincipal extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu Asistencias;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JMenuItem miAgregarUnidad;
     private javax.swing.JMenuItem miConsultarAsis;
+    private javax.swing.JMenuItem miConsultarAsisUnidad;
     private javax.swing.JMenuItem miConsultarUnidades;
     private javax.swing.JMenuItem miCursosRegistrados;
     private javax.swing.JMenuItem miImportar;

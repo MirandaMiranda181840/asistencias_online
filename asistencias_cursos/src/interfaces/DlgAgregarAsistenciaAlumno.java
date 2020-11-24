@@ -185,7 +185,7 @@ public class DlgAgregarAsistenciaAlumno extends javax.swing.JFrame {
                 try {
                  Asistencia asistencia= new Asistencia(Integer.toString(idCurso), JtxtFieldNombre.getText(),
                          jTextFieldHoraLlegada.getText(), jTextFieldDuracion.getText()+"min",
-                         jTextFieldHoraSalida.getText(), fecha, null, null, true);
+                         jTextFieldHoraSalida.getText(), fecha, true);
                  modelo.guardarNuevaAsistenciaAlumno(Conexion.obtener(), asistencia);
              JOptionPane.showMessageDialog(this, "¡Se registró la asistencia con exito!");
              this.setVisible(false);
