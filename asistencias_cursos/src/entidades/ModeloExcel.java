@@ -160,7 +160,7 @@ public class ModeloExcel {
          PreparedStatement consulta;
     
             try{
-                consulta=(PreparedStatement) conexion.prepareStatement("INSERT INTO asistencias (idCurso,nombre,horaLlegada,duracion,horaSalida,asistencia,fecha) VALUES(?,?,?,?,?,?,?);");
+                consulta=(PreparedStatement) conexion.prepareStatement("INSERT INTO asistencias (idCurso,nombre,horaLlegada,duracion,horaSalida,asistencia,fecha, unidadIndice, unidadNombre) VALUES(?,?,?,?,?,?,?,?,?);");
                 consulta.setInt(1,Integer.parseInt(asistencia.getIdCurso()) );
                 consulta.setString(2,asistencia.getNombre());
                 consulta.setString(3,asistencia.getHoraLlegada());
@@ -168,6 +168,8 @@ public class ModeloExcel {
                 consulta.setString(5,asistencia.getHoraSalida());
                 consulta.setBoolean(6,asistencia.isAsistencia());
                 consulta.setString(7, asistencia.getFecha());
+                consulta.setInt(8, Integer.parseInt(asistencia.getUnidadIndice()));
+                consulta.setString(9, asistencia.getUnidadNombre());
                 consulta.executeUpdate();
             
             } catch (SQLException ex) {
