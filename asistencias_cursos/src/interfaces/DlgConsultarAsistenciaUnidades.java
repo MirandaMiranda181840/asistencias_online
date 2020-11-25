@@ -138,6 +138,13 @@ public class DlgConsultarAsistenciaUnidades extends javax.swing.JDialog {
             
             if (unidades.isEmpty()){
                         JOptionPane.showMessageDialog(this, "No hay unidades registradas para esa clase");
+                        //Remueve las filas anteriores
+                        int filas = tabla.getRowCount();
+                        if (filas != 0){
+                            for (int i = 0; i<=tabla.getRowCount(); i++){
+                                modelo.removeRow(i);
+                            }
+                        }
                     }else{
                         Collections.sort(unidades);
                         for(Unidad elemento:unidades){
@@ -162,7 +169,7 @@ public class DlgConsultarAsistenciaUnidades extends javax.swing.JDialog {
     }
     
     private void llenarTabla() throws SQLException{
-         asistencias.removeAll(unidades);
+         asistencias.removeAll(asistencias);
          // Nombre de las columnas como apareceran en la tabla
         String[] columnas = {"Nombre", "Asistencias"};
         modelo = new DefaultTableModel();
@@ -197,6 +204,8 @@ public class DlgConsultarAsistenciaUnidades extends javax.swing.JDialog {
                     
                     if (asistencias.isEmpty()){
                         JOptionPane.showMessageDialog(this, "No hay asistencias para esta unidad en esta clase");
+
+                        
                     }else{
                         
                         //Se suman las asistencias
@@ -207,7 +216,7 @@ public class DlgConsultarAsistenciaUnidades extends javax.swing.JDialog {
                             modelo.addRow( new Object[] {elemento.getNombre(), elemento.getAsistenciasUnidad()} );     
                             System.out.println(elemento);
                         }
-                         asistencias.removeAll(unidades);
+                         asistencias.removeAll(asistencias);
                     }
                     
 

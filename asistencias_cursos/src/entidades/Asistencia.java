@@ -62,6 +62,14 @@ public class Asistencia {
         this.asistenciasUnidad = asistenciasUnidad;
     }
 
+    public Asistencia(String nombre, String horaLlegada, String duracion, String fecha) {
+        this.nombre = nombre;
+        this.horaLlegada = horaLlegada;
+        this.duracion = duracion;
+        this.fecha = fecha;
+    }
+    
+
     public int getAsistenciasUnidad() {
         return asistenciasUnidad;
     }

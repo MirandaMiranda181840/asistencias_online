@@ -107,7 +107,7 @@ public class DlgConsultarAsistencias2 extends javax.swing.JDialog {
     }
     
     private void llenarTabla() throws SQLException{
-         asistencias.removeAll(asistencias);
+         asistencias.removeAll(unidades);
          // Nombre de las columnas como apareceran en la tabla
         String[] columnas = {"Nombre", "Asistencias"};
         modelo = new DefaultTableModel();
@@ -134,12 +134,9 @@ public class DlgConsultarAsistencias2 extends javax.swing.JDialog {
                         unidadIndice = resultadosTabla.getInt("unidadIndice");
                         unidadNombre = resultadosTabla.getString("unidadNombre");
 
-                        if (asistencia){
-                            System.out.println("Llego esto: "+ nombre + ",  idCurso: "+idCurso+", unidadIndice: "+unidadIndice);
-                            Asistencia asistencita = new Asistencia(nombre, 1);
-                            asistencias.add(asistencita);
-                        }
-                        
+                        System.out.println("Llego esto: "+ nombre + ",  idCurso: "+idCurso+", unidadIndice: "+unidadIndice);
+                        Asistencia asistencita = new Asistencia(nombre, 1);
+                        asistencias.add(asistencita);
                         
                     }
                     
@@ -155,7 +152,7 @@ public class DlgConsultarAsistencias2 extends javax.swing.JDialog {
                             modelo.addRow( new Object[] {elemento.getNombre(), elemento.getAsistenciasUnidad()} );     
                             System.out.println(elemento);
                         }
-                         asistencias.removeAll(asistencias);
+                         asistencias.removeAll(unidades);
                     }
                     
 
@@ -208,6 +205,7 @@ public class DlgConsultarAsistencias2 extends javax.swing.JDialog {
         cbCursos = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Consultar asistencias");
 
         tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

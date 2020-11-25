@@ -22,6 +22,7 @@ public class Frprincipal extends javax.swing.JFrame {
     DlgConsultarUnidades consultarU;
     DlgConsultarAsistenciaUnidades consultarAsisUni;
     DlgConsultarAsistencias2 consultarAsis2;
+    DlgConsultarAsistenciasAlumno consultarAsisAlum;
     /**
      * Creates new form frprincipal
      */
@@ -54,6 +55,7 @@ public class Frprincipal extends javax.swing.JFrame {
         miModificar = new javax.swing.JMenuItem();
         miConsultarAsisUnidad = new javax.swing.JMenuItem();
         miConsultarTotal = new javax.swing.JMenuItem();
+        miConsultarAlumno = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         miAgregarUnidad = new javax.swing.JMenuItem();
         miConsultarUnidades = new javax.swing.JMenuItem();
@@ -149,6 +151,16 @@ public class Frprincipal extends javax.swing.JFrame {
         });
         Asistencias.add(miConsultarTotal);
 
+        miConsultarAlumno.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
+        miConsultarAlumno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/consultar.png"))); // NOI18N
+        miConsultarAlumno.setText("Consultar alumno");
+        miConsultarAlumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miConsultarAlumnoActionPerformed(evt);
+            }
+        });
+        Asistencias.add(miConsultarAlumno);
+
         jMenuBar1.add(Asistencias);
 
         jMenu3.setText("Unidades");
@@ -233,6 +245,12 @@ public class Frprincipal extends javax.swing.JFrame {
         consultarAsis2.setVisible(true);
     }//GEN-LAST:event_miConsultarTotalActionPerformed
 
+    private void miConsultarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miConsultarAlumnoActionPerformed
+        // TODO add your handling code here:
+        consultarAsisAlum = new DlgConsultarAsistenciasAlumno(this, true);
+        consultarAsisAlum.setVisible(true);
+    }//GEN-LAST:event_miConsultarAlumnoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -281,6 +299,7 @@ public class Frprincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JMenuItem miAgregarUnidad;
+    private javax.swing.JMenuItem miConsultarAlumno;
     private javax.swing.JMenuItem miConsultarAsis;
     private javax.swing.JMenuItem miConsultarAsisUnidad;
     private javax.swing.JMenuItem miConsultarTotal;
