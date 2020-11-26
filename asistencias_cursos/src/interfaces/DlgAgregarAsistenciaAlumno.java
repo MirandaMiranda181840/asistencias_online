@@ -7,6 +7,7 @@ package interfaces;
 
 import entidades.Asistencia;
 import entidades.ModeloExcel;
+import entidades.Unidad;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,12 +28,14 @@ public class DlgAgregarAsistenciaAlumno extends javax.swing.JFrame {
     ModeloExcel modelo;
     private int idCurso;
     private String fecha;
-    public DlgAgregarAsistenciaAlumno(int idCurso, String fecha) {
+    private Unidad unidad;
+    public DlgAgregarAsistenciaAlumno(java.awt.Frame parent, boolean modal, int idCurso, String fecha, Unidad unidad) {
         initComponents();
         setLocationRelativeTo(null);
         modelo= new ModeloExcel();
         this.idCurso=idCurso;
         this.fecha=fecha;
+        this.unidad = unidad;
     }
 
     /**
@@ -185,7 +188,7 @@ public class DlgAgregarAsistenciaAlumno extends javax.swing.JFrame {
                 try {
                  Asistencia asistencia= new Asistencia(Integer.toString(idCurso), JtxtFieldNombre.getText(),
                          jTextFieldHoraLlegada.getText(), jTextFieldDuracion.getText()+"min",
-                         jTextFieldHoraSalida.getText(), fecha, null, null, true);
+                         jTextFieldHoraSalida.getText(), fecha, String.valueOf(unidad.getIndice()), unidad.getNombre(), true);
                  modelo.guardarNuevaAsistenciaAlumno(Conexion.obtener(), asistencia);
              JOptionPane.showMessageDialog(this, "¡Se registró la asistencia con exito!");
              this.setVisible(false);

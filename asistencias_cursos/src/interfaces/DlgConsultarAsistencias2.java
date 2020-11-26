@@ -107,7 +107,7 @@ public class DlgConsultarAsistencias2 extends javax.swing.JDialog {
     }
     
     private void llenarTabla() throws SQLException{
-         asistencias.removeAll(unidades);
+         asistencias.removeAll(asistencias);
          // Nombre de las columnas como apareceran en la tabla
         String[] columnas = {"Nombre", "Asistencias"};
         modelo = new DefaultTableModel();
@@ -152,7 +152,7 @@ public class DlgConsultarAsistencias2 extends javax.swing.JDialog {
                             modelo.addRow( new Object[] {elemento.getNombre(), elemento.getAsistenciasUnidad()} );     
                             System.out.println(elemento);
                         }
-                         asistencias.removeAll(unidades);
+                         asistencias.removeAll(asistencias);
                     }
                     
 
