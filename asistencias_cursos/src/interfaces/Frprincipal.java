@@ -23,6 +23,8 @@ public class Frprincipal extends javax.swing.JFrame {
     DlgConsultarAsistenciaUnidades consultarAsisUni;
     DlgConsultarAsistencias2 consultarAsis2;
     DlgConsultarAsistenciasAlumno consultarAsisAlum;
+    FrmModificarCurso modificarCursos;
+    FrmModificarUnidad modificarUnidad;
     /**
      * Creates new form frprincipal
      */
@@ -49,6 +51,7 @@ public class Frprincipal extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         miNuevoCurso = new javax.swing.JMenuItem();
         miCursosRegistrados = new javax.swing.JMenuItem();
+        miModificarCurso = new javax.swing.JMenuItem();
         Asistencias = new javax.swing.JMenu();
         miImportar = new javax.swing.JMenuItem();
         miConsultarAsis = new javax.swing.JMenuItem();
@@ -59,6 +62,7 @@ public class Frprincipal extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         miAgregarUnidad = new javax.swing.JMenuItem();
         miConsultarUnidades = new javax.swing.JMenuItem();
+        miModificarUnidad = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -95,6 +99,16 @@ public class Frprincipal extends javax.swing.JFrame {
             }
         });
         jMenu1.add(miCursosRegistrados);
+
+        miModificarCurso.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
+        miModificarCurso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/modificar.png"))); // NOI18N
+        miModificarCurso.setText("Modificar");
+        miModificarCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miModificarCursoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(miModificarCurso);
 
         jMenuBar1.add(jMenu1);
 
@@ -166,6 +180,7 @@ public class Frprincipal extends javax.swing.JFrame {
         jMenu3.setText("Unidades");
         jMenu3.setFont(new java.awt.Font("Lato", 1, 16)); // NOI18N
 
+        miAgregarUnidad.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
         miAgregarUnidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton-agregar.png"))); // NOI18N
         miAgregarUnidad.setText("Agregar");
         miAgregarUnidad.addActionListener(new java.awt.event.ActionListener() {
@@ -175,6 +190,7 @@ public class Frprincipal extends javax.swing.JFrame {
         });
         jMenu3.add(miAgregarUnidad);
 
+        miConsultarUnidades.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
         miConsultarUnidades.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/consultar.png"))); // NOI18N
         miConsultarUnidades.setText("Consultar");
         miConsultarUnidades.addActionListener(new java.awt.event.ActionListener() {
@@ -183,6 +199,16 @@ public class Frprincipal extends javax.swing.JFrame {
             }
         });
         jMenu3.add(miConsultarUnidades);
+
+        miModificarUnidad.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
+        miModificarUnidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/modificar.png"))); // NOI18N
+        miModificarUnidad.setText("Modificar");
+        miModificarUnidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miModificarUnidadActionPerformed(evt);
+            }
+        });
+        jMenu3.add(miModificarUnidad);
 
         jMenuBar1.add(jMenu3);
 
@@ -251,6 +277,18 @@ public class Frprincipal extends javax.swing.JFrame {
         consultarAsisAlum.setVisible(true);
     }//GEN-LAST:event_miConsultarAlumnoActionPerformed
 
+    private void miModificarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miModificarCursoActionPerformed
+        // TODO add your handling code here:
+        modificarCursos = new FrmModificarCurso(this, true);
+        modificarCursos.setVisible(true);
+    }//GEN-LAST:event_miModificarCursoActionPerformed
+
+    private void miModificarUnidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miModificarUnidadActionPerformed
+        // TODO add your handling code here:
+        modificarUnidad = new FrmModificarUnidad(this,true);
+        modificarUnidad.setVisible(true);
+    }//GEN-LAST:event_miModificarUnidadActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -307,6 +345,8 @@ public class Frprincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem miCursosRegistrados;
     private javax.swing.JMenuItem miImportar;
     private javax.swing.JMenuItem miModificar;
+    private javax.swing.JMenuItem miModificarCurso;
+    private javax.swing.JMenuItem miModificarUnidad;
     private javax.swing.JMenuItem miNuevoCurso;
     private javax.swing.JLabel txtLogo;
     // End of variables declaration//GEN-END:variables

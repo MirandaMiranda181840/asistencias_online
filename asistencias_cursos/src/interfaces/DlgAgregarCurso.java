@@ -270,7 +270,7 @@ public class DlgAgregarCurso extends javax.swing.JDialog {
          if (conn.ifExists ("Select * from cursos where nombre = ? AND periodo = ? AND dias = ? AND hora = ?", 
                  curso.getNombre(), curso.getPeriodo(), curso.getDias(), curso.getHora())){
         //Existe registro
-            JOptionPane.showMessageDialog(this, "El curso ya está registrado");
+            JOptionPane.showMessageDialog(this, "El curso ya existe");
         }else{
         //No hay registros
             consulta = conexion.prepareStatement("INSERT INTO cursos (nombre, periodo, dias, hora) VALUES(?, ?, ?, ?);");

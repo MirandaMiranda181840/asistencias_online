@@ -68,6 +68,7 @@ public class DlgListarCursos extends javax.swing.JDialog {
          // Nombre de las columnas como apareceran en la tabla
         String[] columnas = {"Nombre", "Periodo", "Dias", "Hora"};
         tabla = new JTable();
+        tabla.setEnabled(false);
         modelo = new DefaultTableModel();
         desplazamiento = new JScrollPane(tabla);
         int id;
@@ -155,16 +156,16 @@ public class DlgListarCursos extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(190, 190, 190)
+                .addGap(176, 176, 176)
                 .addComponent(btnRegresar)
-                .addContainerGap(200, Short.MAX_VALUE))
+                .addContainerGap(213, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(330, Short.MAX_VALUE)
+                .addContainerGap(241, Short.MAX_VALUE)
                 .addComponent(btnRegresar)
-                .addContainerGap())
+                .addGap(100, 100, 100))
         );
 
         pack();
