@@ -4,6 +4,11 @@
  * and open the template in the editor.
  */
 package interfaces;
+
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author miran
@@ -25,6 +30,7 @@ public class Frprincipal extends javax.swing.JFrame {
     DlgConsultarAsistenciasAlumno consultarAsisAlum;
     FrmModificarCurso modificarCursos;
     FrmModificarUnidad modificarUnidad;
+    DlgConsultarFaltas consultarFaltas;
     /**
      * Creates new form frprincipal
      */
@@ -59,6 +65,7 @@ public class Frprincipal extends javax.swing.JFrame {
         miConsultarAsisUnidad = new javax.swing.JMenuItem();
         miConsultarTotal = new javax.swing.JMenuItem();
         miConsultarAlumno = new javax.swing.JMenuItem();
+        miConsultarFaltas = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         miAgregarUnidad = new javax.swing.JMenuItem();
         miConsultarUnidades = new javax.swing.JMenuItem();
@@ -175,6 +182,16 @@ public class Frprincipal extends javax.swing.JFrame {
         });
         Asistencias.add(miConsultarAlumno);
 
+        miConsultarFaltas.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
+        miConsultarFaltas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/consultar.png"))); // NOI18N
+        miConsultarFaltas.setText("Consultar faltas");
+        miConsultarFaltas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miConsultarFaltasActionPerformed(evt);
+            }
+        });
+        Asistencias.add(miConsultarFaltas);
+
         jMenuBar1.add(Asistencias);
 
         jMenu3.setText("Unidades");
@@ -289,6 +306,17 @@ public class Frprincipal extends javax.swing.JFrame {
         modificarUnidad.setVisible(true);
     }//GEN-LAST:event_miModificarUnidadActionPerformed
 
+    private void miConsultarFaltasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miConsultarFaltasActionPerformed
+        try {
+            // TODO add your handling code here:
+            consultarFaltas = new DlgConsultarFaltas(this, true);
+            consultarFaltas.setVisible(true);
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(Frprincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_miConsultarFaltasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -340,6 +368,7 @@ public class Frprincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem miConsultarAlumno;
     private javax.swing.JMenuItem miConsultarAsis;
     private javax.swing.JMenuItem miConsultarAsisUnidad;
+    private javax.swing.JMenuItem miConsultarFaltas;
     private javax.swing.JMenuItem miConsultarTotal;
     private javax.swing.JMenuItem miConsultarUnidades;
     private javax.swing.JMenuItem miCursosRegistrados;
