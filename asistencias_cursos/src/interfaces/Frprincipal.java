@@ -31,6 +31,7 @@ public class Frprincipal extends javax.swing.JFrame {
     FrmModificarCurso modificarCursos;
     FrmModificarUnidad modificarUnidad;
     DlgConsultarFaltas consultarFaltas;
+    DlgEliminarCurso eliminarCurso;
     /**
      * Creates new form frprincipal
      */
@@ -58,6 +59,7 @@ public class Frprincipal extends javax.swing.JFrame {
         miNuevoCurso = new javax.swing.JMenuItem();
         miCursosRegistrados = new javax.swing.JMenuItem();
         miModificarCurso = new javax.swing.JMenuItem();
+        miEliminarCurso = new javax.swing.JMenuItem();
         Asistencias = new javax.swing.JMenu();
         miImportar = new javax.swing.JMenuItem();
         miConsultarAsis = new javax.swing.JMenuItem();
@@ -116,6 +118,16 @@ public class Frprincipal extends javax.swing.JFrame {
             }
         });
         jMenu1.add(miModificarCurso);
+
+        miEliminarCurso.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
+        miEliminarCurso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton-eliminar.png"))); // NOI18N
+        miEliminarCurso.setText("Eliminar");
+        miEliminarCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miEliminarCursoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(miEliminarCurso);
 
         jMenuBar1.add(jMenu1);
 
@@ -317,6 +329,18 @@ public class Frprincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_miConsultarFaltasActionPerformed
 
+    private void miEliminarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miEliminarCursoActionPerformed
+        try {
+            // TODO add your handling code here:
+            eliminarCurso = new DlgEliminarCurso(this, true);
+            eliminarCurso.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(Frprincipal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Frprincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_miEliminarCursoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -372,6 +396,7 @@ public class Frprincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem miConsultarTotal;
     private javax.swing.JMenuItem miConsultarUnidades;
     private javax.swing.JMenuItem miCursosRegistrados;
+    private javax.swing.JMenuItem miEliminarCurso;
     private javax.swing.JMenuItem miImportar;
     private javax.swing.JMenuItem miModificar;
     private javax.swing.JMenuItem miModificarCurso;
