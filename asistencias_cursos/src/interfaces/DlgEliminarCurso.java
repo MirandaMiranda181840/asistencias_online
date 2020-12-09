@@ -224,8 +224,11 @@ public class DlgEliminarCurso extends javax.swing.JDialog {
                 Logger.getLogger(DlgEliminarCurso.class.getName()).log(Level.SEVERE, null, ex);
             }
         }else{
-            JOptionPane.showMessageDialog(this, "Elija un curso");
+            JOptionPane.showMessageDialog(this, "Elija un curso a eliminar");
         }
+        
+        
+        
         
     }//GEN-LAST:event_btnEliminarActionPerformed
 

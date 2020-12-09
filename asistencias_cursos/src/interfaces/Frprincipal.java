@@ -32,6 +32,7 @@ public class Frprincipal extends javax.swing.JFrame {
     FrmModificarUnidad modificarUnidad;
     DlgConsultarFaltas consultarFaltas;
     DlgEliminarCurso eliminarCurso;
+    DlgEliminarUnidad eliminarUnidad;
     /**
      * Creates new form frprincipal
      */
@@ -72,6 +73,7 @@ public class Frprincipal extends javax.swing.JFrame {
         miAgregarUnidad = new javax.swing.JMenuItem();
         miConsultarUnidades = new javax.swing.JMenuItem();
         miModificarUnidad = new javax.swing.JMenuItem();
+        miEliminarUnidad = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -239,6 +241,16 @@ public class Frprincipal extends javax.swing.JFrame {
         });
         jMenu3.add(miModificarUnidad);
 
+        miEliminarUnidad.setFont(new java.awt.Font("Lato", 1, 14)); // NOI18N
+        miEliminarUnidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton-eliminar.png"))); // NOI18N
+        miEliminarUnidad.setText("Eliminar");
+        miEliminarUnidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miEliminarUnidadActionPerformed(evt);
+            }
+        });
+        jMenu3.add(miEliminarUnidad);
+
         jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
@@ -341,6 +353,12 @@ public class Frprincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_miEliminarCursoActionPerformed
 
+    private void miEliminarUnidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miEliminarUnidadActionPerformed
+        // TODO add your handling code here:
+        eliminarUnidad = new DlgEliminarUnidad(this, true);
+        eliminarUnidad.setVisible(true);
+    }//GEN-LAST:event_miEliminarUnidadActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -397,6 +415,7 @@ public class Frprincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem miConsultarUnidades;
     private javax.swing.JMenuItem miCursosRegistrados;
     private javax.swing.JMenuItem miEliminarCurso;
+    private javax.swing.JMenuItem miEliminarUnidad;
     private javax.swing.JMenuItem miImportar;
     private javax.swing.JMenuItem miModificar;
     private javax.swing.JMenuItem miModificarCurso;
